@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const BasicModalContainer = styled.div`  
+export const ModalDateRangeContainer = styled.div`  
  
 `
 export const boxStyle = {

@@ -1,4 +1,4 @@
-import { BasicModalContainer, boxStyle, divInputStyle, spanInputStyle} from './styles'
+import { ModalDateRangeContainer, boxStyle, divInputStyle, spanInputStyle} from './styles'
 import { useState } from 'react'
 import { Button } from '@mui/material'
 import { Box } from '@mui/material'
@@ -6,14 +6,14 @@ import { Typography } from '@mui/material'
 import { Modal } from '@mui/material'
 import { InputDate } from '../InputDate'
 
-export function BasicModal() {
+export function ModalDateRange() {
   const [ open, setOpen ] = useState(false)
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
   return (
-    <BasicModalContainer>
+    <ModalDateRangeContainer>
         <Button 
           variant='contained'
           onClick={handleOpen}
@@ -48,6 +48,6 @@ export function BasicModal() {
               </Typography>
             </Box>
         </Modal>
-    </BasicModalContainer>
+    </ModalDateRangeContainer>
   )
 }

@@ -7,4 +7,8 @@ export const FiltersContainer = styled.header`
     gap: 2rem;
     padding: 0 1rem;
     border-bottom: 1px solid #E5E5E5;
+    
+    * {
+        width: 20rem;
+    }
 `

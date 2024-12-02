@@ -1,28 +1,22 @@
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemText from '@mui/material/ListItemText'
-import { Rocket } from '@mui/icons-material'
-import { colors } from '@mui/material'
-import { styleList, styleListItem } from './styles'
+import { ResumeTransactionsContainer } from './styles'
+import { Transaction } from './Transaction'
 
 export function ResumeTransactions() {
+  const date = new Date()
+  
   return (
-    <List sx={styleList}>
-      <ListItem sx={styleListItem}>
-        <Rocket sx={{color: colors.blue[700]}}/>
-        <ListItemText primary="Rocketseat" secondary="Nov 29, 2024"/>
-        <ListItemText primary="Studies" secondary="R$ 159,90"/>
-      </ListItem>
-      <ListItem sx={styleListItem}>
-        <Rocket sx={{color: colors.blue[700]}}/>
-        <ListItemText primary="Rocketseat" secondary="Nov 29, 2024"/>
-        <ListItemText primary="Studies" secondary="R$ 159,90"/>
-      </ListItem>
-      <ListItem sx={styleListItem}>
-        <Rocket sx={{color: colors.blue[700]}}/>
-        <ListItemText primary="Rocketseat" secondary="Nov 29, 2024"/>
-        <ListItemText primary="Studies" secondary="R$ 159,90"/>
-      </ListItem>
-    </List>
+    <ResumeTransactionsContainer>
+        <span className='title'>Transactions</span>
+        <Transaction key={1} title='Rocketseat' category='Studies' date={date} variant='expense'/>
+        <Transaction key={2} title='Site' category='Work' date={date} variant='entries'/>
+        <Transaction key={3} title='Speed Fitness' category='Health' date={date} variant='expense'/>
+        <Transaction key={1} title='Rocketseat' category='Studies' date={date} variant='expense'/>
+        <Transaction key={2} title='Site' category='Work' date={date} variant='entries'/>
+        <Transaction key={3} title='Speed Fitness' category='Health' date={date} variant='expense'/>
+        <Transaction key={1} title='Rocketseat' category='Studies' date={date} variant='expense'/>
+        <Transaction key={2} title='Site' category='Work' date={date} variant='entries'/>
+        <Transaction key={3} title='Speed Fitness' category='Health' date={date} variant='expense'/>
+        <Transaction key={1} title='Rocketseat' category='Studies' date={date} variant='expense'/> 
+    </ResumeTransactionsContainer>
   )
 }

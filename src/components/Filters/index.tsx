@@ -1,5 +1,5 @@
 import { FiltersContainer } from './styles'
-import { BasicModal } from '../BasicModal'
+import { ModalDateRange} from '../ModalDateRange'
 import { SelectValue } from '../SelectValue'
 
 export function Filters() {
@@ -14,9 +14,9 @@ export function Filters() {
     ]
     return (
         <FiltersContainer>
-            <SelectValue label='Values' items={prices}/>
-            <SelectValue label='Category' items={category}/>
-            <BasicModal/>
+            <SelectValue key={1} label='Values' items={prices}/>
+            <SelectValue key={2} label='Category' items={category}/>
+            <ModalDateRange/>
         </FiltersContainer>
     )
 }

@@ -2,7 +2,6 @@ import { FormControl } from '@mui/material'
 import { InputLabel } from '@mui/material'
 import { MenuItem } from '@mui/material'
 import { Select, SelectChangeEvent } from '@mui/material'
-import { Box } from '@mui/material'
 import { useState } from 'react'
 
 type Value = {
@@ -22,23 +21,21 @@ export function SelectValue({label, items}: PropsSelect) {
         setValue(event.target.value)
     }
     return (
-        <Box sx={{width: '10rem'}}>
-            <FormControl fullWidth variant='standard'>
-                <InputLabel id='select'>{label}</InputLabel>
-                <Select
-                    labelId='select'
-                    id='select'
-                    label='Category'
-                    value={value}
-                    onChange={handleChangeCategory}
-                >   
-                    { items &&
-                        items.map((item) => (
-                            <MenuItem value={item.value}>{item.name}</MenuItem>
-                        ))
-                    }
-                </Select>
-            </FormControl>
-        </Box>
+        <FormControl sx={{width: '100%'}} variant='standard'>
+            <InputLabel id='select'>{label}</InputLabel>
+            <Select
+                labelId='select'
+                id='select'
+                label='Category'
+                value={value}
+                onChange={handleChangeCategory}
+            >   
+                { items &&
+                    items.map((item, index) => (
+                        <MenuItem key={index} value={item.value}>{item.name}</MenuItem>
+                    ))
+                }
+            </Select>
+        </FormControl>
     )
 }
