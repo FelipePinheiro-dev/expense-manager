@@ -66,7 +66,7 @@ export  const TotalCard = styled.div`
 `
 
 export const PieContainer = styled.div`
-  height: max-content;
+  height: 15.625rem;
   background: ${colors.blue[50]};
   border-radius: 8px;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);

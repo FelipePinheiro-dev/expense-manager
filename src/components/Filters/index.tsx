@@ -14,9 +14,18 @@ export function Filters() {
     ]
     return (
         <FiltersContainer>
-            <SelectValue key={1} label='Values' items={prices}/>
-            <SelectValue key={2} label='Category' items={category}/>
-            <ModalDateRange/>
+            <span>
+                <SelectValue key={1} label='Values' items={prices}/>
+            </span>
+            
+            <span>
+                <SelectValue key={2} label='Category' items={category}/>
+            </span>
+           
+            <span>
+                <ModalDateRange/>
+            </span>
+            
         </FiltersContainer>
     )
 }

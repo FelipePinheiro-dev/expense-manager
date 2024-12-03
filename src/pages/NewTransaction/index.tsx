@@ -26,7 +26,9 @@ export function NewTransaction() {
                             />
                         </FormControl>
 
-                        <SelectValue items={category} label='Category'/>
+                        <span className='select'>
+                            <SelectValue items={category} label='Category'/>
+                        </span>
                     </div>
                     
                     <div className='default'>
@@ -66,7 +68,7 @@ export function NewTransaction() {
                         </FormControl>
                     </div>
                     
-                    <div>
+                    <div className='newtransaction'>
                         <Button variant='outlined'>
                             Send new transaction
                         </Button>
