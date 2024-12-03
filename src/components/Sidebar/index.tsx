@@ -1,4 +1,4 @@
-import { GridViewRounded, ReceiptLong, BarChart, AccountBalance } from '@mui/icons-material'
+import { GridViewRounded, ReceiptLong, /*BarChart*/ AccountBalance } from '@mui/icons-material'
 import { NavLink } from 'react-router-dom'
 import { SidebarContainer } from './styles'
 import { LogoApp } from '../LogoApp'
@@ -27,13 +27,13 @@ export function Sidebar() {
                     </div>
                 </NavLink>
 
-                <NavLink to='/analytics'>
+               {/*<NavLink to='/analytics'>
                     <span className='green-border-active'></span>
                     <div className='text'>
                         <BarChart/>
                         <span>Analytics</span>
                     </div>
-                </NavLink>
+                </NavLink>*/}
 
                 <NavLink to='/transactions'>
                     <span className='green-border-active'></span>

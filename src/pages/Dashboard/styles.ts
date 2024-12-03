@@ -56,6 +56,12 @@ export  const TotalCard = styled.div`
     svg {
       color: ${colors.blue[500]};
     }
+
+    .expense {
+      svg {
+        color: ${colors.red[500]};
+      }
+    }
   }
 
   .currency {

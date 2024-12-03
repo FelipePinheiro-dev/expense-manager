@@ -6,7 +6,11 @@ import { Typography } from '@mui/material'
 import { Modal } from '@mui/material'
 import { InputDate } from '../InputDate'
 
-export function ModalDateRange() {
+interface PropsDateRange {
+  disable: boolean
+}
+
+export function ModalDateRange({ disable }: PropsDateRange) {
   const [ open, setOpen ] = useState(false)
 
   const handleOpen = () => setOpen(true)
@@ -17,6 +21,7 @@ export function ModalDateRange() {
         <Button 
           variant='contained'
           onClick={handleOpen}
+          disabled={disable}
         >
           Choose a date range
         </Button>

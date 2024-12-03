@@ -7,11 +7,20 @@ export function BasicHorizontalBar() {
         yAxis={[{ scaleType: 'band', data: ['Oct', 'Nov', 'Dec'] }]}
         xAxis={[{ scaleType: 'linear'}]}
         series={[
-            {   label: 'Higher Expenses',
-                data: [1500, 1200, 2000],
+            {   label: 'Leisure',
+                data: [1500, 2000, 3000],
                 color: colors.red[500]
             },
-        ]}
+            {   label: 'Studies',
+              data: [2000, 1500, 500],
+              color: colors.blue[500]
+            },
+            {   label: 'Market',
+              data: [600, 800, 600],
+              color: colors.green[500]
+            },
+          ]}
+       
 
         layout='horizontal'
         width={300}

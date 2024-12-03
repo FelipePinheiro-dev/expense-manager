@@ -11,10 +11,11 @@ type Value = {
 
 interface PropsSelect {
     label: string,
-    items: Value[]
+    items: Value[],
+    disable?: boolean
 }
 
-export function SelectValue({label, items}: PropsSelect) {
+export function SelectValue({label, items, disable}: PropsSelect) {
     const [ value, setValue ] = useState('')
     
     function handleChangeCategory(event: SelectChangeEvent) {
@@ -22,13 +23,14 @@ export function SelectValue({label, items}: PropsSelect) {
     }
     return (
         <FormControl sx={{width: '100%'}} variant='standard'>
-            <InputLabel id='select'>{label}</InputLabel>
+            <InputLabel id='select' >{label}</InputLabel>
             <Select
                 labelId='select'
                 id='select'
                 label='Category'
                 value={value}
                 onChange={handleChangeCategory}
+                disabled={disable}
             >   
                 { items &&
                     items.map((item, index) => (

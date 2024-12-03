@@ -5,13 +5,13 @@
 - [] Um botão de logout deve estar disponível no cabeçalho.
 
 2. Painel de Resumo de Gastos (RF02)
-- [] Deve exibir o total de gastos do mês atual.
-- [] Mostrar gráficos dinâmicos (pizza ou barras) com a distribuição de gastos por categoria.
-- [] Atualizar as informações em tempo real com base nos filtros aplicados.
+- [x] Deve exibir o total de gastos do mês atual.
+- [x] Mostrar gráficos dinâmicos (pizza ou barras) com a distribuição de gastos por categoria.
+- [x] Atualizar as informações em tempo real com base nos filtros aplicados.
 
 3. Cadastro de Despesas (RF03)
-- [] O usuário deve ser capaz de adicionar uma nova despesa por meio de um formulário.
-- [] O formulário deve conter os campos: descrição, valor, categoria e data.
+- [x] O usuário deve ser capaz de adicionar uma nova despesa por meio de um formulário.
+- [x] O formulário deve conter os campos: descrição, valor, categoria e data.
 - [] O botão "Salvar" deve validar os campos e adicionar a despesa à lista global (armazenada no Redux).
 
 4. Visualização de Despesas (RF04)
@@ -19,20 +19,16 @@
 - [] Permitir editar ou excluir uma despesa existente.
 - [] Ordenar a lista por data ou valor.
 
+
 5. Filtros de Despesas (RF05)
 
 - [x] Filtros devem estar disponíveis tanto no Dashboard quanto na Tela de Despesas.
 - [x] Permitir filtrar por período (últimos 7 dias, mês atual, ano atual).
 - [x] Filtrar por categoria e faixa de valor.
+- [] Input para filtrar despesa especifica
 
 - [] Aplicar os filtros em tempo real, atualizando a tabela e os gráficos.
 
-6. Relatórios Detalhados (RF06)
-- [] Disponibilizar gráficos detalhados na Tela de Relatórios.
-- [] Mostrar comparativos entre meses e categorias.
-
-7. Interface Responsiva (RF07)
-- [] A aplicação deve ser responsiva para diferentes tamanhos de tela (desktop, tablet e mobile).
 
 # Regras de Negócio (RN)
 1. RN01:

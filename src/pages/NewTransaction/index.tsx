@@ -27,7 +27,10 @@ export function NewTransaction() {
                         </FormControl>
 
                         <span className='select'>
-                            <SelectValue items={category} label='Category'/>
+                            <SelectValue 
+                                items={category} 
+                                label='Category'
+                            />
                         </span>
                     </div>
                     

@@ -36,7 +36,7 @@ export function Dashboard() {
                     </div>
                             
                     <div className='default'>
-                        <span><MonetizationOn/></span>
+                        <span className='expense'><MonetizationOn/></span>
                         <span className='currency'>1.400,00</span>
                     </div>
                     </TotalCard>
