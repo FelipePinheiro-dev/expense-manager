@@ -1,32 +1,26 @@
 # 📋 Requisitos Funcionais (RF)
 
-1. Autenticação (RF01)
-- [] O sistema deve permitir o login básico para acesso ao Dashboard (pode ser simulado no frontend).
-- [] Um botão de logout deve estar disponível no cabeçalho.
+2. Dashboard general (RF01)
+- [] Deve exibir o total de gastos do mês atual.
+- [] Mostrar gráficos dinâmicos (pizza ou barras) com a distribuição de gastos por categoria.
+- [] Atualizar as informações em tempo real com base nos filtros aplicados.
 
-2. Painel de Resumo de Gastos (RF02)
-- [x] Deve exibir o total de gastos do mês atual.
-- [x] Mostrar gráficos dinâmicos (pizza ou barras) com a distribuição de gastos por categoria.
-- [x] Atualizar as informações em tempo real com base nos filtros aplicados.
-
-3. Cadastro de Despesas (RF03)
-- [x] O usuário deve ser capaz de adicionar uma nova despesa por meio de um formulário.
-- [x] O formulário deve conter os campos: descrição, valor, categoria e data.
+3. Register form (RF02)
+- [] O usuário deve ser capaz de adicionar uma nova despesa por meio de um formulário.
+- [] O formulário deve conter os campos: descrição, valor, categoria e data.
 - [] O botão "Salvar" deve validar os campos e adicionar a despesa à lista global (armazenada no Redux).
 
-4. Visualização de Despesas (RF04)
+4. Visualização de Despesas (RF03)
 - [] Exibir uma lista com todas as despesas cadastradas.
 - [] Permitir editar ou excluir uma despesa existente.
 - [] Ordenar a lista por data ou valor.
 
 
-5. Filtros de Despesas (RF05)
-
-- [x] Filtros devem estar disponíveis tanto no Dashboard quanto na Tela de Despesas.
-- [x] Permitir filtrar por período (últimos 7 dias, mês atual, ano atual).
-- [x] Filtrar por categoria e faixa de valor.
-- [] Input para filtrar despesa especifica
-
+5. Filtros de Despesas (RF04)
+- [] Filtros devem estar disponíveis tanto no Dashboard quanto na Tela de Despesas.
+- [] Permitir filtrar por período (últimos 7 dias, mês atual, ano atual).
+- [] Filtrar por categoria e faixa de valor.
+- [] Input para filtrar despesa especifica apenas na tela de detalhes
 - [] Aplicar os filtros em tempo real, atualizando a tabela e os gráficos.
 
 

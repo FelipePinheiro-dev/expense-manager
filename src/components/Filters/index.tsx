@@ -2,7 +2,13 @@ import { FiltersContainer } from './styles'
 import { ModalDateRange} from '../ModalDateRange'
 import { SelectValue } from '../SelectValue'
 import { useLocation } from 'react-router-dom'
+import { SelectChangeEvent } from '@mui/material'
+import { useState } from 'react'
 export function Filters() { 
+    const [ selectCategory, setSelectCategory ] = useState('')
+    const [ selectValue, setSelectValue ] = useState('')
+    const [selectDate, setSelectDate ] = useState('')
+
     // logic to disable filters
     const location = useLocation()
     const disable = location.pathname === '/transactions' 
@@ -22,6 +28,19 @@ export function Filters() {
         {value: '30days', name: 'Last 30 days'},
         {value: 'lastyear', name: 'Last year'}
     ]
+
+    function handleChangeSelectCategory(event: SelectChangeEvent<string>) {
+        setSelectCategory(event.target.value)
+    }
+
+    function handleChangeSelectValue(event: SelectChangeEvent<string>) {
+        setSelectValue(event.target.value)
+    }
+
+    function handleChangeSelectDate(event: SelectChangeEvent<string>) {
+        setSelectDate(event.target.value)
+    }
+
     return (
         <FiltersContainer>
             <span>
@@ -30,6 +49,8 @@ export function Filters() {
                     label='Dates' 
                     items={lastDates}
                     disable={disable}
+                    value={selectDate}
+                    onChange={handleChangeSelectDate}
                 />
             </span>
 
@@ -38,6 +59,8 @@ export function Filters() {
                     key={1} label='Values' 
                     items={prices} 
                     disable={disable}
+                    value={selectValue}
+                    onChange={handleChangeSelectValue}
                 />
             </span>
             
@@ -47,6 +70,8 @@ export function Filters() {
                     label='Category' 
                     items={category}
                     disable={disable}
+                    value={selectCategory}
+                    onChange={handleChangeSelectCategory}
                 />
             </span>
            

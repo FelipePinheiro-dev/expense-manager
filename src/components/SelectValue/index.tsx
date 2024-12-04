@@ -1,8 +1,8 @@
-import { FormControl } from '@mui/material'
+import { FormControl, SelectChangeEvent } from '@mui/material'
 import { InputLabel } from '@mui/material'
 import { MenuItem } from '@mui/material'
-import { Select, SelectChangeEvent } from '@mui/material'
-import { useState } from 'react'
+import { Select } from '@mui/material'
+import {  forwardRef} from 'react'
 
 type Value = {
     value: string
@@ -12,25 +12,23 @@ type Value = {
 interface PropsSelect {
     label: string,
     items: Value[],
-    disable?: boolean
+    disable?: boolean,
+    value: string,
+    onChange: (event: SelectChangeEvent<string>) => void
 }
 
-export function SelectValue({label, items, disable}: PropsSelect) {
-    const [ value, setValue ] = useState('')
-    
-    function handleChangeCategory(event: SelectChangeEvent) {
-        setValue(event.target.value)
-    }
+export const SelectValue = forwardRef(function SelectValue({label, items, disable, value, onChange}: PropsSelect, ref) {
     return (
         <FormControl sx={{width: '100%'}} variant='standard'>
             <InputLabel id='select' >{label}</InputLabel>
             <Select
                 labelId='select'
                 id='select'
-                label='Category'
-                value={value}
-                onChange={handleChangeCategory}
+                label={label}
                 disabled={disable}
+                inputRef={ref}
+                onChange={onChange}
+                value={value}
             >   
                 { items &&
                     items.map((item, index) => (
@@ -40,4 +38,4 @@ export function SelectValue({label, items, disable}: PropsSelect) {
             </Select>
         </FormControl>
     )
-}
+})
