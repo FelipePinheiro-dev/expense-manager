@@ -22,6 +22,10 @@ export const TableContainer = styled.table`
         td:first-child {
             width: 50%;
         }
+
+        td:last-child {
+            text-align: end;
+        }
     }
 `
 

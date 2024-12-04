@@ -5,6 +5,9 @@ import { DetailsContainer, SearchContainer } from './styles'
 import { Table } from './components/Table'
 import { Search } from '@mui/icons-material'
 import { useState } from 'react'
+import { Pagination } from '@mui/material'
+import { Stack } from '@mui/material'
+
 
 export function Details() {
     const [ loading, setLoading ] = useState(false)
@@ -39,6 +42,10 @@ export function Details() {
             </SearchContainer>
             
             <Table/>
+
+            <Stack spacing={2} className='stack'>
+                <Pagination count={10} variant='outlined' shape='rounded'/>
+            </Stack>
         </DetailsContainer>
     )
 }
