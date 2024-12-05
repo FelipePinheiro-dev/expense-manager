@@ -81,3 +81,13 @@ export function formatCurrency(value: number) {
     return value.toFixed(2).replace('.', ',')
 }
 ```
+
+# Redux
+
+para criar um slice você precisa: 
+1. importar o createSlice de redux toolkit,
+2. criar um estado inicial
+3. criar um createSlice 
+    - nome do pedaço, então se o slice vai guardar dados do usuário, o nome deve ser 'usuario'.
+    - colocar o initalState criado no passo 2
+    - colocar os reducers: {}

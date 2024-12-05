@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, OutlinedInput, Radio, RadioGroup, FormLabel, FormControlLabel, Button, Snackbar } from '@mui/material'
+import { FormControl, InputLabel, OutlinedInput, Radio, RadioGroup, FormLabel, FormControlLabel, Button } from '@mui/material'
 import { NewTransactionContainer, NewTransactionContent } from './styles'
 import { InputDate } from '../../components/InputDate'
 import { SelectValue } from '../../components/SelectValue'
@@ -8,10 +8,11 @@ import { CATEGORIES } from '../../constants/categories'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 
-import { Alert } from '@mui/material'
 import { useForm, Controller } from 'react-hook-form'
 import { useState } from 'react'
 import { Dayjs } from 'dayjs'
+import { useDispatch } from 'react-redux'
+import { addNewTransaction } from '../../redux/slices/transactionsSlice'
 
 const schemaFormTransaction = zod.object({
     title: zod.string().min(5).max(80),
@@ -24,9 +25,7 @@ const schemaFormTransaction = zod.object({
 export type SchemaFormTransaction = zod.infer<typeof schemaFormTransaction> 
 
 export function NewTransaction() {
-    const [ openAlert, setOpenAlert ] = useState(false)
-
-    const [ message, setMessage ] = useState('')
+    const dispatch = useDispatch()
 
     const [ controlledDate, setControlledDate ] = useState<Dayjs | null>(null)
     
@@ -38,25 +37,16 @@ export function NewTransaction() {
         }
     })
 
-    const { register, handleSubmit, control, setValue} = methodsRelatedFrom
+    const { register, handleSubmit, control, setValue } = methodsRelatedFrom
 
     function onSubmit(data: SchemaFormTransaction) {
-        
+        dispatch(addNewTransaction(data))
     }
 
     function handleChangeDate(date: Dayjs | null) {
         setControlledDate(date)
         if(date === null) return 
         setValue('date', date.toDate())
-    }
-
-    function handleOpenAlert(message: string) {
-        setMessage(message)
-        setOpenAlert(true)
-    }
-
-    function handleClose() {
-        setOpenAlert(false)
     }
 
     return (
@@ -142,17 +132,6 @@ export function NewTransaction() {
                     </div>
                 </form>                
             </NewTransactionContent>
-                                
-            <Snackbar 
-                open={openAlert}
-                anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
-                autoHideDuration={3000}
-                onClose={handleClose}
-            >
-                <Alert severity='error' >
-                    {message}
-                </Alert>
-            </Snackbar>
         </NewTransactionContainer>
     )
 }
