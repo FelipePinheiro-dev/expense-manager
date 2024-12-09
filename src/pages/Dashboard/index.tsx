@@ -12,7 +12,30 @@ import { BasicBar } from '../../components/BasicBar'
 import { BasicHorizontalBar } from '../../components/BasicHorizontalBar'
 import { MonetizationOn } from '@mui/icons-material'
 
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../redux/store'
+import { addTransactions, PropsTransactions } from '../../redux/slices/transactionsSlice'
+import { useEffect } from 'react'
+import { useCustomSelector } from '../../hooks/useSelector'
+
 export function Dashboard() {
+    const dispatch = useDispatch<AppDispatch>()
+    const transactions = useCustomSelector((state) => state.transactions)
+    
+    function addTransactionToTheLoading(data: PropsTransactions[]) {
+        dispatch(addTransactions(data))
+    }
+
+    async function fetchTransactions() {
+        const response = await fetch('http://localhost:3000/transactions')
+        const data = await response.json()
+        addTransactionToTheLoading(data)
+    }
+
+    useEffect(() => {
+        fetchTransactions()
+    }, [])
+
     return (
         <DashboardContainer>
             <ResumeTransactions/>

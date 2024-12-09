@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { TypeCategory } from '../../constants/categories'
 
 export interface PropsTransactions {
@@ -15,12 +15,11 @@ const transactionsSlice = createSlice({
     name: 'transactions',
     initialState,
     reducers: {
-        addNewTransaction(state, action) {
-            console.log(state)
-            console.log(action)
+        addTransactions(state, action: PayloadAction<PropsTransactions[]>) {
+            state = action.payload
         }
     }
 })
 
-export const { addNewTransaction } = transactionsSlice.actions
+export const { addTransactions } = transactionsSlice.actions
 export const transactionsReducer = transactionsSlice.reducer

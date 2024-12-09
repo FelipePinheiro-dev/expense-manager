@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import storage from 'redux-persist/lib/storage'
 import { rootReducer } from './rootReducer'
+
+import storage from 'redux-persist/lib/storage'
 import {
     persistStore,
     persistReducer,
@@ -14,7 +15,8 @@ import {
 
 const persistConfig = {
     key: '@expanse-manager:root',
-    storage
+    storage,
+    blacklist: ['transactions', 'alertSnackbar']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

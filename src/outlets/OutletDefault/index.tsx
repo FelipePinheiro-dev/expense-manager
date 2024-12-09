@@ -2,6 +2,7 @@ import { OutletDefaultContainer } from './styles'
 import { Outlet } from 'react-router-dom'
 import { Sidebar } from '../../components/Sidebar'
 import { Filters } from '../../components/Filters'
+import { MUISnackbar } from '../../components/MUISnackbar'
 
 export function OutletDefault() {
     return (
@@ -11,6 +12,7 @@ export function OutletDefault() {
                 <Filters/>
                 <Outlet/>
             </div>
+            <MUISnackbar/>
         </OutletDefaultContainer>
     )
 }

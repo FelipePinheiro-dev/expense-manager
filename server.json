@@ -1,0 +1,28 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "title": "Site Development",
+            "value": 5000,
+            "category": "Work", 
+            "type": "entries",
+            "date": "2024-12-06T15:26:22.022Z"
+        },
+        {
+            "id": 2,
+            "title": "Hamburger",
+            "value": 50,
+            "category": "Food", 
+            "type": "expense",
+            "date": "2024-12-06T15:26:22.022Z"
+        },
+        {
+            "id": 3,
+            "title": "Loans to Cleber",
+            "value": 6000,
+            "category": "Work", 
+            "type": "entries",
+            "date": "2024-12-06T15:26:22.022Z"
+        }
+    ]
+}
