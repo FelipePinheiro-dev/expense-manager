@@ -49,22 +49,8 @@ export  const TotalCard = styled.div`
   flex-direction: column;
   gap: .75rem;
 
-  > .default {
-    display: flex;
-    gap: 1rem;
-
-    svg {
-      color: ${colors.blue[500]};
-    }
-
-    .expense {
-      svg {
-        color: ${colors.red[500]};
-      }
-    }
-  }
-
   .currency {
+    white-space: nowrap;
     font-size: 2.5rem;
     font-weight: bold;
     color: ${props => props.theme.palette.text.secondary};

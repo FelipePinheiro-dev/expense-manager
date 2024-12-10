@@ -10,9 +10,24 @@ import { ResumeTransactions } from '../../components/ResumeTransactions'
 import { BasicPie } from '../../components/BasicPie'
 import { BasicBar } from '../../components/BasicBar'
 import { BasicHorizontalBar } from '../../components/BasicHorizontalBar'
-import { MonetizationOn } from '@mui/icons-material'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../redux/store'
+import { formatCurrency } from '../../formats/formatCurrency'
+
 
 export function Dashboard() {
+    const { transactions } = useSelector((state: RootState) => state.transactions)
+    
+    const accumulator = transactions.reduce((acc, item) => {
+        if(item.type === 'income') {
+            acc.totIncome += item.value
+        } else {
+            acc.totExpense += item.value
+        }
+
+        return acc
+    }, { totIncome: 0, totExpense: 0})
+
     return (
         <DashboardContainer>
             <ResumeTransactions/>
@@ -20,25 +35,19 @@ export function Dashboard() {
             <MiddleContentStyles>
                 <TotalContainerStyles>
                     <TotalCard>
-                    <div>
-                        Total Entries
-                    </div>
-                    
-                    <div className='default'>
-                        <span><MonetizationOn/></span>
-                        <span className='currency'>15.300,00</span>
-                    </div>
+                        <div>
+                            Total Incomes
+                        </div>
+                        
+                        <span className='currency'>+ {formatCurrency.format(accumulator.totIncome)}</span>
                     </TotalCard>
                 
                     <TotalCard>
-                    <div>
-                        Total Expenses
-                    </div>
-                            
-                    <div className='default'>
-                        <span className='expense'><MonetizationOn/></span>
-                        <span className='currency'>1.400,00</span>
-                    </div>
+                        <div>
+                            Total Expenses
+                        </div>
+                                
+                        <span className='currency'>- {formatCurrency.format(accumulator.totExpense)}</span>
                     </TotalCard>
                 </TotalContainerStyles>
                 <ChartContainer>

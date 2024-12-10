@@ -3,7 +3,7 @@
     {
       "id": "1c52",
       "title": "Hamburger",
-      "value": 1500,
+      "value": 50,
       "category": "Food",
       "date": "2024-12-10T14:36:38.296Z",
       "type": "expense"
@@ -12,9 +12,73 @@
       "id": "19f6",
       "title": "Banana",
       "value": 10,
-      "category": "Market",
+      "category": "Food",
       "date": "2024-12-10T15:28:01.996Z",
       "type": "expense"
+    },
+    {
+      "id": "3b91",
+      "title": "Cotefacil",
+      "value": 2400,
+      "category": "Business",
+      "date": "2024-12-31T17:59:14.234Z",
+      "type": "income"
+    },
+    {
+      "title": "Fees",
+      "value": 2000,
+      "category": "Business",
+      "date": "2024-10-12T19:33:52.518Z",
+      "type": "income",
+      "id": "D6rSGXa"
+    },
+    {
+      "title": "Cotefacil",
+      "value": 819,
+      "category": "Business",
+      "date": "2024-11-19T19:33:52.518Z",
+      "type": "income",
+      "id": "ZpONm96"
+    },
+    {
+      "title": "Fees",
+      "value": 500,
+      "category": "Business",
+      "date": "2024-11-13T19:33:52.518Z",
+      "type": "income",
+      "id": "bfgebxH"
+    },
+    {
+      "title": "Vivo",
+      "value": 61.54,
+      "category": "Utilities",
+      "date": "2024-12-05T19:33:52.518Z",
+      "type": "expense",
+      "id": "jgmEjbZ"
+    },
+    {
+      "title": "Estacio",
+      "value": 200,
+      "category": "Studies",
+      "date": "2024-12-06T19:33:52.518Z",
+      "type": "expense",
+      "id": "6fAY8I-"
+    },
+    {
+      "title": "Luz",
+      "value": 159,
+      "category": "Utilities",
+      "date": "2024-12-06T19:33:52.518Z",
+      "type": "expense",
+      "id": "SdICSQY"
+    },
+    {
+      "title": "Chicken",
+      "value": 20,
+      "category": "Food",
+      "date": "2024-12-07T20:39:02.162Z",
+      "type": "expense",
+      "id": "vaa28bf"
     }
   ]
 }

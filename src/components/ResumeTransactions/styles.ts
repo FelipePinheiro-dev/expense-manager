@@ -3,6 +3,7 @@ import * as colors from '@mui/material/colors'
 
 export const ResumeTransactionsContainer = styled.div`
     display: flex;
+    height: 100%;
     flex-direction: column;
     gap: .8rem;
     padding: .75rem 1rem;

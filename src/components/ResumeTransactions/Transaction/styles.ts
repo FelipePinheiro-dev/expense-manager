@@ -27,9 +27,13 @@ export const LayoutLeft = styled(LayoutDefault)`
 
 
 export interface PropsType {
-    variant: TypeVariant
+    type: TypeVariant
 }
 
 export const TypeCurrency = styled.span<PropsType>`
-    color: ${props => props.variant === 'expense' ? colors.red[500] : colors.blue[500]};
+    color: ${props => props.type === 'expense' ? colors.red[500] : colors.blue[500]};
+
+    > svg {
+        color: ${props => props.type === 'expense' ? colors.red[500] : colors.blue[500]};
+    }
 ` 

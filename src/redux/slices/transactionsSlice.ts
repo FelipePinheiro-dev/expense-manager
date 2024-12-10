@@ -1,12 +1,17 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { api } from '../../services/api/axios'
+import { TypeCategory } from '../../constants/categories'
 
-export interface PropsTransactions {
+export interface PropsCreateTransactions {
     title: string,
     value: number,
-    category: string,
+    category: TypeCategory,
     date: string,
     type: 'income' | 'expense'
+}
+
+interface PropsTransactions extends PropsCreateTransactions {
+    id: string
 }
 
 const initialState = {
@@ -17,7 +22,7 @@ const initialState = {
 
 export const createNewTransaction = createAsyncThunk(
     'transactions/createTransaction',
-    async (newTransaction: PropsTransactions, { rejectWithValue }) => {
+    async (newTransaction: PropsCreateTransactions, { rejectWithValue }) => {
         try {
             const {title, value, category, date, type} = newTransaction
             const response = await api.post('transactions', {
@@ -28,7 +33,6 @@ export const createNewTransaction = createAsyncThunk(
                 type
             })
 
-            console.log(response)
             return response.data as PropsTransactions
         } catch (error: any) {
             return rejectWithValue(error.message)

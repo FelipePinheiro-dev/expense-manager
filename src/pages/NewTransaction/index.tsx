@@ -1,8 +1,8 @@
 import { ChangeEvent } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useForm, Controller, FieldErrors } from 'react-hook-form'
 
-import { FormControl, InputLabel, OutlinedInput, Radio, RadioGroup, FormLabel, FormControlLabel, Button } from '@mui/material'
+import { FormControl, InputLabel, OutlinedInput, Radio, RadioGroup, FormLabel, FormControlLabel, Button, Select, MenuItem } from '@mui/material'
 import { showAlertSnackbar } from '../../redux/slices/alertSnackbarSlice'
 
 import { NewTransactionContainer, NewTransactionContent } from './styles'
@@ -17,13 +17,13 @@ import dayjs from 'dayjs'
 import { formatCurrencyRealTime } from '../../formats/formatCurrencyRealTime'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
-import { AppDispatch, RootState } from '../../redux/store'
-
+import { AppDispatch } from '../../redux/store'
+import { CATEGORIES } from '../../constants/categories'
 
 const schemaFormTransaction = zod.object({
-    title: zod.string().min(5).max(80).regex(/^[A-Z][a-z]*$/, 'First letter must be capitalized and the rest lowercase'),
+    title: zod.string().min(2).max(80).regex(/^[A-Z][a-z]*(\s[A-Z][a-z]*)*$/, 'First letter must be capitalized and the rest lowercase'),
     value: zod.string().min(2).max(80),
-    category: zod.string().min(3).max(80).regex(/^[A-Z][a-z]*$/, 'First letter must be capitalized and the rest lowercase'),
+    category: zod.enum(['Studies', 'Leisure', 'Business', 'Clothings', 'Food', 'Sports', 'Utilities']),
     date: zod.string(),
     type: zod.enum(['income', 'expense'])        
 })
@@ -31,7 +31,6 @@ const schemaFormTransaction = zod.object({
 export type SchemaFormTransaction = zod.infer<typeof schemaFormTransaction> 
 
 export function NewTransaction() {
-    const transactions = useSelector<RootState>((state) => state.transactions.transactions)
     const dispatch = useDispatch<AppDispatch>()
     
     const methodsForm = useForm<SchemaFormTransaction>({
@@ -39,7 +38,7 @@ export function NewTransaction() {
         defaultValues: {
             title: '',
             value: '',
-            category: '',
+            category: 'Utilities',
             type: 'expense',
             date: new Date().toISOString()
         }
@@ -50,11 +49,8 @@ export function NewTransaction() {
         handleSubmit, 
         control,
         setValue,
-        reset,
-        formState
+        reset
     } = methodsForm
-    
-    const { isSubmitting } = formState
 
     function changeInputValue(event: ChangeEvent<HTMLInputElement>) {
         const rawValue = event.target.value
@@ -71,6 +67,7 @@ export function NewTransaction() {
         const valueAsNumber = parseFloat(normalizedValue)
         const newValue = { value: valueAsNumber }
         const newData = Object.assign(data, newValue)
+
         await dispatch(createNewTransaction(newData))
         
         dispatch(showAlertSnackbar({
@@ -98,17 +95,15 @@ export function NewTransaction() {
             }))
         }
 
-        if(errors.category) {
+        if(errors.date) {
             return dispatch(showAlertSnackbar({
-                messageAlert: String(errors.category.message),
+                messageAlert: String(errors.date.message),
                 severity: 'error',
                 variant: 'filled'
             }))
         }
-        
     }
 
-    console.log(transactions)
     return (
         <NewTransactionContainer>
             <NewTransactionContent>
@@ -135,31 +130,46 @@ export function NewTransaction() {
                         
                     </FormControl>
 
-                    <FormControl>
-                        <InputLabel htmlFor='category'>Category</InputLabel>
-                        <OutlinedInput
-                            id='category'
-                            label='category'
-                            {...register('category')}
-                        />
-                    </FormControl>
-                
+                    <Controller
+                        control={control}
+                        name='category'
+                        render={({ field }) => (
+                            <FormControl>
+                                <InputLabel id="category" htmlFor='category'>Category</InputLabel>
+                                <Select
+                                    id='category'
+                                    label='category'
+                                    value={field.value}
+                                    {...register('category')}
+                                >
+                                    {CATEGORIES.map((category) => (
+                                        <MenuItem key={category.value} value={category.value}> {category.name} </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        )}
+                    />
+                   
+                      
                     <Controller
                         control={control}
                         name='date'
                         render={({ field }) => (
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DatePicker value={dayjs(field.value)} onChange={field.onChange}/>
+                                <DatePicker 
+                                    value={dayjs(field.value)} 
+                                    onChange={(value) => field.onChange(value?.toISOString())}
+                                />
                             </LocalizationProvider>
                         )}
                     />
-                
-                    <FormControl>
-                        <FormLabel id='type' >Type Transaction</FormLabel>
-                        <Controller
-                            name='type'
-                            control={control}
-                            render={({ field }) => (
+
+                    <Controller
+                        control={control}
+                        name='type'
+                        render={({ field }) => (
+                            <FormControl>
+                                <FormLabel id='type' >Type Transaction</FormLabel>
                                 <RadioGroup
                                     row
                                     aria-labelledby='type'
@@ -175,12 +185,11 @@ export function NewTransaction() {
                                         control={<Radio sx={{'&.Mui-checked': {color: colors.red[500]}}}/>}
                                     />
                                 </RadioGroup>
-                            )}
-                        >
-                        </Controller>
-                    </FormControl>
-                
-                    <Button type='submit' variant='contained' size='large' disabled={isSubmitting}>
+                            </FormControl>
+                        )}
+                    />
+   
+                    <Button type='submit' variant='contained' size='large'>
                         Save
                     </Button>
                 </form>            
