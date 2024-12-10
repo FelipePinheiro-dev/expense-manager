@@ -1,25 +1,67 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { TypeCategory } from '../../constants/categories'
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
+import { api } from '../../services/api/axios'
 
 export interface PropsTransactions {
     title: string,
-    date: Date,
-    type: 'Entries' | 'Expense'
-    category: TypeCategory,
-    value: number
+    value: number,
+    category: string,
+    date: string,
+    type: 'income' | 'expense'
 }
 
-const initialState: PropsTransactions[] = []
+const initialState = {
+    transactions: [] as PropsTransactions[],
+    status: 'idle', // idle | loading | succeeded | failed
+    error: null as string | null,
+}
+
+export const createNewTransaction = createAsyncThunk(
+    'transactions/createTransaction',
+    async (newTransaction: PropsTransactions, { rejectWithValue }) => {
+        try {
+            const {title, value, category, date, type} = newTransaction
+            const response = await api.post('transactions', {
+                title,
+                value,
+                category,
+                date,
+                type
+            })
+
+            console.log(response)
+            return response.data as PropsTransactions
+        } catch (error: any) {
+            return rejectWithValue(error.message)
+        }
+    }
+)
+
+export const fetchTransactions = createAsyncThunk(
+    'transactions/fetchTransactions',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await api.get('transactions')
+            return response.data as PropsTransactions[]
+        } catch (error: any) {
+            return rejectWithValue(error.message)
+        }
+    }
+)
 
 const transactionsSlice = createSlice({
     name: 'transactions',
     initialState,
-    reducers: {
-        addTransactions(state, action: PayloadAction<PropsTransactions[]>) {
-            state = action.payload
-        }
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchTransactions.fulfilled, (state, action: PayloadAction<PropsTransactions[]>) => {
+                state.transactions = action.payload
+            })
+
+            .addCase(createNewTransaction.fulfilled, (state, action: PayloadAction<PropsTransactions>) => {
+                state.transactions.unshift(action.payload)
+            })
     }
 })
 
-export const { addTransactions } = transactionsSlice.actions
 export const transactionsReducer = transactionsSlice.reducer

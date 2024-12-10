@@ -7,27 +7,25 @@ export const TableContainer = styled.table`
     margin: auto;
     
     border-collapse: collapse;
-
-    tbody {
-        tr {
-            border-bottom: 8px solid ${props => props.theme.palette.background.default};
-            background: ${colors.blue[50]};
-        }
-        
-        
-        td {
-            padding: 1rem .5rem;
-        }
-
-        td:first-child {
-            width: 50%;
-        }
-
-        td:last-child {
-            text-align: end;
-        }
-    }
 `
+
+export const Tr = styled.tr`
+    border-bottom: 8px solid ${props => props.theme.palette.background.default};
+    background: ${colors.blue[50]};
+`
+
+export const Td = styled.td`
+    padding: 1rem .5rem;
+`
+
+export const FirstTd = styled(Td)`
+    width: 50%;
+`
+
+export const LastTd = styled(Td)`
+    text-align: right;
+`
+
 
 interface PropsToggleColor {
     variant: 'red' | 'blue' 

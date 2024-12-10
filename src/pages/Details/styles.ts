@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const DetailsContainer = styled.div`
-    .stack {
+    .container-pagination {
         display: flex;
         align-items: center;
         max-width: 52.5rem;
@@ -17,7 +17,7 @@ export const SearchContainer = styled.div`
     display: flex;
     gap: 1rem;
 
-    div:first-child {
+    .container-search {
         flex: 1;
-    }
+    }    
 `

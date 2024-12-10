@@ -19,7 +19,7 @@ export function Details() {
     return (
         <DetailsContainer>
             <SearchContainer>
-                <FormControl>
+                <FormControl className='container-search'>
                     <InputLabel htmlFor="search">Search transaction</InputLabel>
                     <OutlinedInput
                         size='small'
@@ -43,7 +43,7 @@ export function Details() {
             
             <Table/>
 
-            <Stack spacing={2} className='stack'>
+            <Stack spacing={2} className='container-pagination'>
                 <Pagination count={10} variant='outlined' shape='rounded'/>
             </Stack>
         </DetailsContainer>

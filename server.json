@@ -1,28 +1,20 @@
 {
-    "transactions": [
-        {
-            "id": 1,
-            "title": "Site Development",
-            "value": 5000,
-            "category": "Work", 
-            "type": "entries",
-            "date": "2024-12-06T15:26:22.022Z"
-        },
-        {
-            "id": 2,
-            "title": "Hamburger",
-            "value": 50,
-            "category": "Food", 
-            "type": "expense",
-            "date": "2024-12-06T15:26:22.022Z"
-        },
-        {
-            "id": 3,
-            "title": "Loans to Cleber",
-            "value": 6000,
-            "category": "Work", 
-            "type": "entries",
-            "date": "2024-12-06T15:26:22.022Z"
-        }
-    ]
+  "transactions": [
+    {
+      "id": "1c52",
+      "title": "Hamburger",
+      "value": 1500,
+      "category": "Food",
+      "date": "2024-12-10T14:36:38.296Z",
+      "type": "expense"
+    },
+    {
+      "id": "19f6",
+      "title": "Banana",
+      "value": 10,
+      "category": "Market",
+      "date": "2024-12-10T15:28:01.996Z",
+      "type": "expense"
+    }
+  ]
 }

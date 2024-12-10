@@ -1,11 +1,12 @@
 import { ChangeEvent } from 'react'
-import { useDispatch } from 'react-redux'
-import { useForm, Controller } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { useForm, Controller, FieldErrors } from 'react-hook-form'
 
 import { FormControl, InputLabel, OutlinedInput, Radio, RadioGroup, FormLabel, FormControlLabel, Button } from '@mui/material'
 import { showAlertSnackbar } from '../../redux/slices/alertSnackbarSlice'
 
 import { NewTransactionContainer, NewTransactionContent } from './styles'
+import { createNewTransaction } from '../../redux/slices/transactionsSlice'
 import * as colors from '@mui/material/colors'
 
 import { LocalizationProvider } from '@mui/x-date-pickers'
@@ -16,37 +17,22 @@ import dayjs from 'dayjs'
 import { formatCurrencyRealTime } from '../../formats/formatCurrencyRealTime'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
+import { AppDispatch, RootState } from '../../redux/store'
 
 
 const schemaFormTransaction = zod.object({
     title: zod.string().min(5).max(80).regex(/^[A-Z][a-z]*$/, 'First letter must be capitalized and the rest lowercase'),
-    value: zod.string().min(5).max(80),
-    category: zod.string().min(5).max(80).regex(/^[A-Z][a-z]*$/, 'First letter must be capitalized and the rest lowercase'),
+    value: zod.string().min(2).max(80),
+    category: zod.string().min(3).max(80).regex(/^[A-Z][a-z]*$/, 'First letter must be capitalized and the rest lowercase'),
     date: zod.string(),
     type: zod.enum(['income', 'expense'])        
 })
 
 export type SchemaFormTransaction = zod.infer<typeof schemaFormTransaction> 
 
-interface ErrorHandling {
-    title?: {
-        message: string
-        type: string
-    },
-
-    category?: {
-        message: string
-        type: string
-    },
-
-    value?: {
-        message: string
-        type: string
-    }
-}
-
 export function NewTransaction() {
-    const dispatch = useDispatch()
+    const transactions = useSelector<RootState>((state) => state.transactions.transactions)
+    const dispatch = useDispatch<AppDispatch>()
     
     const methodsForm = useForm<SchemaFormTransaction>({
         resolver: zodResolver(schemaFormTransaction),
@@ -64,35 +50,65 @@ export function NewTransaction() {
         handleSubmit, 
         control,
         setValue,
-        reset
+        reset,
+        formState
     } = methodsForm
-  
+    
+    const { isSubmitting } = formState
+
     function changeInputValue(event: ChangeEvent<HTMLInputElement>) {
         const rawValue = event.target.value
         const formattedValue = formatCurrencyRealTime(rawValue)
         setValue('value', formattedValue)
     }
 
-    function onSubmit(data: SchemaFormTransaction) {
-        //dispatch(addNewTransaction(data))
+    async function onSubmit(data: SchemaFormTransaction) {
+        // Remove os separadores de milhares (.)
+        const cleanValue = data.value.replace(/\./g, '')
+        // Substitui a vírgula decimal (,) por ponto (.)
+        const normalizedValue = cleanValue.replace(',', '.')
+        // Converte para número
+        const valueAsNumber = parseFloat(normalizedValue)
+        const newValue = { value: valueAsNumber }
+        const newData = Object.assign(data, newValue)
+        await dispatch(createNewTransaction(newData))
+        
         dispatch(showAlertSnackbar({
             messageAlert: 'Transaction saved successfully',
             severity: 'success',
             variant: 'filled'
         }))
-
         reset()
     }
 
-    function errorHandling(errors: ErrorHandling) {
+    function errorHandling(errors: FieldErrors) {
         if(errors.title) {
             return dispatch(showAlertSnackbar({
-                messageAlert: errors.title.message,
+                messageAlert: String(errors.title.message),
                 severity: 'error',
                 variant: 'filled'
             }))
         }
+
+        if(errors.value) {
+            return dispatch(showAlertSnackbar({
+                messageAlert: String(errors.value.message),
+                severity: 'error',
+                variant: 'filled'
+            }))
+        }
+
+        if(errors.category) {
+            return dispatch(showAlertSnackbar({
+                messageAlert: String(errors.category.message),
+                severity: 'error',
+                variant: 'filled'
+            }))
+        }
+        
     }
+
+    console.log(transactions)
     return (
         <NewTransactionContainer>
             <NewTransactionContent>
@@ -164,7 +180,7 @@ export function NewTransaction() {
                         </Controller>
                     </FormControl>
                 
-                    <Button type='submit' variant='contained' size='large'>
+                    <Button type='submit' variant='contained' size='large' disabled={isSubmitting}>
                         Save
                     </Button>
                 </form>            
