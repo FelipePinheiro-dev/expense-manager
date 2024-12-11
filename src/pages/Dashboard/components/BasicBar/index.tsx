@@ -15,7 +15,7 @@ export function BasicBar() {
             color: colors.red[500]
         }]}
       width={300}
-      height={220}
+      height={300}
     />
   )
 }

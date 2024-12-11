@@ -5,38 +5,36 @@ export const DashboardContainer = styled.div`
   width: 100%;
 
   display: grid;
-  grid-template-columns: 20rem 1fr auto;
+  grid-template-columns: 20rem 1fr;
   gap: .75rem;
   padding: 1.2rem 1rem;
 `
-
-export const MiddleContentStyles = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: .75rem;
+export const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 `
 
 export const TotalContainerStyles = styled.div`
   display: flex;
-  gap: .75rem;
+  justify-content: center;
+  gap: 1rem;
 `
 
 export const ChartContainer = styled.div`
-  display: flex;
-  flex-direction: column; 
-  align-items: center;
-
-  width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
   background: ${colors.blue['50']};
   border-radius: 8px;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 `
+interface PropsTotalCard {
+  variant: 'blue' | 'red'
+}
 
-export  const TotalCard = styled.div`
+export  const TotalCard = styled.div<PropsTotalCard>`
   width: 100%;
-  max-width: 20rem;
   padding: 1.2rem 1rem;
 
   border-radius: 8px;
@@ -50,16 +48,15 @@ export  const TotalCard = styled.div`
   gap: .75rem;
 
   .currency {
-    white-space: nowrap;
-    font-size: 2.5rem;
+    display: flex;    
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.2rem;
     font-weight: bold;
     color: ${props => props.theme.palette.text.secondary};
-  }
-`
 
-export const PieContainer = styled.div`
-  height: 15.625rem;
-  background: ${colors.blue[50]};
-  border-radius: 8px;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    svg {
+      color: ${props => props.variant === 'blue' ? colors.blue['500'] : colors.red['500']};
+    }
+  }
 `

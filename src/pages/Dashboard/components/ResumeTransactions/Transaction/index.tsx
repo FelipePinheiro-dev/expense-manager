@@ -1,6 +1,6 @@
-import { ThumbDown, ThumbUpSharp } from '@mui/icons-material'
+import { ArrowCircleUp, ArrowCircleDown } from '@mui/icons-material'
 import { TransactionContainer, LayoutDefault, LayoutLeft, TypeCurrency } from './styles'
-import { formatCurrency } from '../../../formats/formatCurrency'
+import { formatCurrency } from '../../../../../formats/formatCurrency'
 import dayjs from 'dayjs'
 export type TypeVariant = 'income' | 'expense'
 
@@ -33,13 +33,13 @@ export function Transaction({ props }: Component) {
     return (
         <TransactionContainer>
             { props.type && props.type === 'income' ? 
-                    <TypeCurrency type={props.type}>
-                        <ThumbUpSharp/>
-                    </TypeCurrency>  
-                    : 
-                    <TypeCurrency type={props.type}>
-                        <ThumbDown/>
-                    </TypeCurrency> 
+                <TypeCurrency type={props.type}>
+                    <ArrowCircleUp/>
+                </TypeCurrency>  
+                : 
+                <TypeCurrency type={props.type}>
+                    <ArrowCircleDown/>
+                </TypeCurrency> 
             }
             
             <LayoutDefault>

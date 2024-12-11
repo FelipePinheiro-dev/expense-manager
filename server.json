@@ -79,6 +79,22 @@
       "date": "2024-12-07T20:39:02.162Z",
       "type": "expense",
       "id": "vaa28bf"
+    },
+    {
+      "title": "Shorts",
+      "value": 59.99,
+      "category": "Clothings",
+      "date": "2024-11-04T19:53:29.628Z",
+      "type": "expense",
+      "id": "eVmQrHq"
+    },
+    {
+      "title": "Rocketseat",
+      "value": 166.99,
+      "category": "Studies",
+      "date": "2024-12-06T19:53:29.628Z",
+      "type": "expense",
+      "id": "KFxHNPR"
     }
   ]
 }

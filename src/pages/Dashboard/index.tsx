@@ -1,19 +1,19 @@
+import { ArrowCircleDown, ArrowCircleUp } from '@mui/icons-material'
+
 import { 
     DashboardContainer, 
-    TotalCard, MiddleContentStyles, 
-    TotalContainerStyles, 
+    TotalCard,
+    Content,
     ChartContainer,
-    PieContainer 
+    TotalContainerStyles,
 } from './styles'
 
-import { ResumeTransactions } from '../../components/ResumeTransactions'
-import { BasicPie } from '../../components/BasicPie'
-import { BasicBar } from '../../components/BasicBar'
-import { BasicHorizontalBar } from '../../components/BasicHorizontalBar'
+import { ResumeTransactions } from './components/ResumeTransactions'
+import { BasicPie } from './components/BasicPie'
+import { BasicBar } from './components/BasicBar'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 import { formatCurrency } from '../../formats/formatCurrency'
-
 
 export function Dashboard() {
     const { transactions } = useSelector((state: RootState) => state.transactions)
@@ -32,34 +32,36 @@ export function Dashboard() {
         <DashboardContainer>
             <ResumeTransactions/>
             
-            <MiddleContentStyles>
+            <Content>
                 <TotalContainerStyles>
-                    <TotalCard>
+                    <TotalCard variant='blue'>
                         <div>
                             Total Incomes
                         </div>
                         
-                        <span className='currency'>+ {formatCurrency.format(accumulator.totIncome)}</span>
+                        <span className='currency'>
+                            <ArrowCircleUp/>
+                            {formatCurrency.format(accumulator.totIncome)}
+                        </span>
                     </TotalCard>
                 
-                    <TotalCard>
+                    <TotalCard variant='red'>
                         <div>
                             Total Expenses
                         </div>
                                 
-                        <span className='currency'>- {formatCurrency.format(accumulator.totExpense)}</span>
+                        <span className='currency'>
+                            <ArrowCircleDown/>
+                            {formatCurrency.format(accumulator.totExpense)}
+                        </span>
                     </TotalCard>
                 </TotalContainerStyles>
+
                 <ChartContainer>
+                    <BasicPie/>
                     <BasicBar/>
-                    
-                    <BasicHorizontalBar/>
                 </ChartContainer>
-            </MiddleContentStyles>
-            
-            <PieContainer>
-                <BasicPie/>
-            </PieContainer>
+            </Content>
         </DashboardContainer>
     )
 }

@@ -10,7 +10,7 @@ export interface PropsCreateTransactions {
     type: 'income' | 'expense'
 }
 
-interface PropsTransactions extends PropsCreateTransactions {
+export interface PropsTransactions extends PropsCreateTransactions {
     id: string
 }
 
@@ -44,7 +44,7 @@ export const fetchTransactions = createAsyncThunk(
     'transactions/fetchTransactions',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await api.get('transactions')
+            const response = await api.get('transactions?_sort=date&_order=desc')
             return response.data as PropsTransactions[]
         } catch (error: any) {
             return rejectWithValue(error.message)
