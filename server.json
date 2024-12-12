@@ -82,7 +82,7 @@
     },
     {
       "title": "Shorts",
-      "value": 59.99,
+      "value": 59,
       "category": "Clothings",
       "date": "2024-11-04T19:53:29.628Z",
       "type": "expense",
@@ -90,7 +90,7 @@
     },
     {
       "title": "Rocketseat",
-      "value": 166.99,
+      "value": 166,
       "category": "Studies",
       "date": "2024-12-06T19:53:29.628Z",
       "type": "expense",

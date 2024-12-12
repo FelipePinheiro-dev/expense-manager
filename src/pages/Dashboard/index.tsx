@@ -11,22 +11,11 @@ import {
 import { ResumeTransactions } from './components/ResumeTransactions'
 import { BasicPie } from './components/BasicPie'
 import { BasicBar } from './components/BasicBar'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../redux/store'
 import { formatCurrency } from '../../formats/formatCurrency'
+import { useTotais } from '../../hooks/useTotais'
 
 export function Dashboard() {
-    const { transactions } = useSelector((state: RootState) => state.transactions)
-    
-    const accumulator = transactions.reduce((acc, item) => {
-        if(item.type === 'income') {
-            acc.totIncome += item.value
-        } else {
-            acc.totExpense += item.value
-        }
-
-        return acc
-    }, { totIncome: 0, totExpense: 0})
+    const accumulator = useTotais()
 
     return (
         <DashboardContainer>

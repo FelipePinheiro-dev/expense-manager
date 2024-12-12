@@ -1,19 +1,14 @@
 import { BarChart } from '@mui/x-charts/BarChart'
-import * as colors from '@mui/material/colors'
+import { useTheThereeBiggest } from '../../../../hooks/useTheThereeBiggest'
 
 export function BasicBar() {
+  const theThreeBiggest = useTheThereeBiggest()
+
   return (
     <BarChart
-      xAxis={[{ scaleType: 'band', data: ['Oct', 'Nov', 'Dec'] }]}
-      series={[
-        {   label: 'Entries',
-            data: [2500, 3000, 4000], 
-            color: colors.blue[500] 
-        }, 
-        {   label: 'Expenses',
-            data: [1500, 1200, 2000],
-            color: colors.red[500]
-        }]}
+      xAxis={[{ data: ['Three biggest expenses'], scaleType: 'band' }]}
+      slotProps={{legend: {padding: 0}}}
+      series={theThreeBiggest}
       width={300}
       height={300}
     />
