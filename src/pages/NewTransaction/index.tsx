@@ -2,7 +2,19 @@ import { ChangeEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import { useForm, Controller, FieldErrors } from 'react-hook-form'
 
-import { FormControl, InputLabel, OutlinedInput, Radio, RadioGroup, FormLabel, FormControlLabel, Button, Select, MenuItem } from '@mui/material'
+import { 
+    FormControl, 
+    InputLabel, 
+    OutlinedInput, 
+    Radio, 
+    RadioGroup, 
+    FormLabel, 
+    FormControlLabel, 
+    Button, 
+    Select, 
+    MenuItem 
+} from '@mui/material'
+import { useNotifications } from '@toolpad/core/useNotifications'
 import { showAlertSnackbar } from '../../redux/slices/alertSnackbarSlice'
 
 import { NewTransactionContainer, NewTransactionContent } from './styles'
@@ -32,6 +44,7 @@ export type SchemaFormTransaction = zod.infer<typeof schemaFormTransaction>
 
 export function NewTransaction() {
     const dispatch = useDispatch<AppDispatch>()
+    const notifications = useNotifications()
     
     const methodsForm = useForm<SchemaFormTransaction>({
         resolver: zodResolver(schemaFormTransaction),
@@ -69,38 +82,34 @@ export function NewTransaction() {
         const newData = Object.assign(data, newValue)
 
         await dispatch(createNewTransaction(newData))
-        
-        dispatch(showAlertSnackbar({
-            messageAlert: 'Transaction saved successfully',
+
+        notifications.show('Transaction saved successfully', {
             severity: 'success',
-            variant: 'filled'
-        }))
+            autoHideDuration: 3000,
+        })
         reset()
     }
 
     function errorHandling(errors: FieldErrors) {
         if(errors.title) {
-            return dispatch(showAlertSnackbar({
-                messageAlert: String(errors.title.message),
+            return notifications.show(String(errors.title.message), {
                 severity: 'error',
-                variant: 'filled'
-            }))
+                autoHideDuration: 3000
+            })
         }
 
         if(errors.value) {
-            return dispatch(showAlertSnackbar({
-                messageAlert: String(errors.value.message),
+            return notifications.show(String(errors.value.message), {
                 severity: 'error',
-                variant: 'filled'
-            }))
+                autoHideDuration: 3000
+            })
         }
 
         if(errors.date) {
-            return dispatch(showAlertSnackbar({
-                messageAlert: String(errors.date.message),
+            return notifications.show(String(errors.date.message), {
                 severity: 'error',
-                variant: 'filled'
-            }))
+                autoHideDuration: 3000
+            })
         }
     }
 

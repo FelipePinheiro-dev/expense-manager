@@ -1,5 +1,5 @@
-import { useMemo } from "react"
-import { useCustomSelector } from "./useSelector"
+import { useMemo } from 'react'
+import { useCustomSelector } from './useSelector'
 import * as colors from '@mui/material/colors'
 
 export function useTheThereeBiggest() {

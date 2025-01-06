@@ -4,6 +4,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import { ThemeProvider } from '@mui/material'
+import { NotificationsProvider } from '@toolpad/core/useNotifications'
 import theme from './styles/theme.ts'
 import { AppRoutes } from './routes/AppRoutes.tsx'
 
@@ -14,12 +15,14 @@ import { persistor } from './redux/store.ts'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider theme={theme}>
-        <Provider store={store}>
-          <PersistGate persistor={persistor}>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <PersistGate persistor={persistor}>
+          <NotificationsProvider>
             <AppRoutes/>
-          </PersistGate>
-        </Provider>
-    </ThemeProvider>
+          </NotificationsProvider>
+        </PersistGate>
+      </ThemeProvider>
+    </Provider>
   </StrictMode>,
 )

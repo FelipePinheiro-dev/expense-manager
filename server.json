@@ -95,6 +95,30 @@
       "date": "2024-12-06T19:53:29.628Z",
       "type": "expense",
       "id": "KFxHNPR"
+    },
+    {
+      "title": "Testando",
+      "value": 245126,
+      "category": "Clothings",
+      "date": "2025-01-15T21:10:46.711Z",
+      "type": "income",
+      "id": "9yswMwX"
+    },
+    {
+      "title": "Testando",
+      "value": 500,
+      "category": "Business",
+      "date": "2025-01-06T21:20:32.968Z",
+      "type": "expense",
+      "id": "lDQHXPa"
+    },
+    {
+      "title": "Teste",
+      "value": 500,
+      "category": "Clothings",
+      "date": "2025-01-06T21:20:32.968Z",
+      "type": "income",
+      "id": "DAEgK_d"
     }
   ]
 }

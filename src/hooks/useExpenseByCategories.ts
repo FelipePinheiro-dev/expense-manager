@@ -6,6 +6,7 @@ import { useMemo } from 'react'
 export function useExpenseByCategories() {
     const { transactions } = useCustomSelector((state) => state.transactions)
 
+
     const categories = useMemo(() => {
         return transactions.reduce((acc, transaction) => {
             if(transaction.type === 'expense') {
@@ -42,13 +43,13 @@ export function useExpenseByCategories() {
         
             return acc
           }, [
-              { id: 1, value: 0, label: "Business",  color: colors.red['100']},
-              { id: 2, value: 0, label: "Clothings", color: colors.red['200']},
-              { id: 3, value: 0, label: "Food", color: colors.red['300']},
-              { id: 4, value: 0, label: "Leisure", color: colors.red['400']},
-              { id: 5, value: 0, label: "Sports", color: colors.red['500']},
-              { id: 6, value: 0, label: "Studies", color: colors.red['600']},
-              { id: 7, value: 0, label: "Utilities", color: colors.red['700']}
+              { id: 1, value: 0, label: 'Business',  color: colors.red['100']},
+              { id: 2, value: 0, label: 'Clothings', color: colors.red['200']},
+              { id: 3, value: 0, label: 'Food', color: colors.red['300']},
+              { id: 4, value: 0, label: 'Leisure', color: colors.red['400']},
+              { id: 5, value: 0, label: 'Sports', color: colors.red['500']},
+              { id: 6, value: 0, label: 'Studies', color: colors.red['600']},
+              { id: 7, value: 0, label: 'Utilities', color: colors.red['700']}
             ]
           )
     }, [transactions])
