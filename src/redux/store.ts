@@ -16,7 +16,7 @@ import {
 const persistConfig = {
     key: '@expanse-manager:root',
     storage,
-    blacklist: ['transactions', 'alertSnackbar']
+    blacklist: ['transactions'] // add to ignore save local storage
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

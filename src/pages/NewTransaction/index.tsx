@@ -15,7 +15,6 @@ import {
     MenuItem 
 } from '@mui/material'
 import { useNotifications } from '@toolpad/core/useNotifications'
-import { showAlertSnackbar } from '../../redux/slices/alertSnackbarSlice'
 
 import { NewTransactionContainer, NewTransactionContent } from './styles'
 import { createNewTransaction } from '../../redux/slices/transactionsSlice'
