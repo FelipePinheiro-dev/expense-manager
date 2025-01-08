@@ -1,58 +1,50 @@
 import styled from '@emotion/styled'
 
-export const SidebarContainer  = styled.nav`
-   grid-area: 'side';
-   background-color: ${props => props.theme.palette.primary.main};
-   display: grid;
-   grid-template-rows: max-content max-content 1fr 60px;
+export const SidebarContainer = styled('div')(({ theme }) => ({
+  backgroundColor: theme.palette.customColors['green-800'],
+  display: 'grid',
+  gridTemplateRows: 'max-content max-content 1fr 60px',
 
-   > .subtitle {
-      padding: 1.2rem 1.6rem;
-      
-      color: ${props => props.theme.palette.primary.contrastText};
-      font-weight: bold;
-      font-family: monospace;
-      text-transform: uppercase;
-   }
+  '> .subtitle': {
+    padding: '1.2rem 1.6rem',
+    fontWeight: 'bold',
+    fontFamily: 'monospace',
+    textTransform: 'uppercase',
+  },
 
-   > .nav {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      
-      a {
-         text-decoration: none;
-         display: flex;
-         gap: 1rem;
+  '> .nav': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1rem',
 
-         .text {
-            display: flex;
-            align-items: center;
-            gap: .8rem;
-            color: ${props => props.theme.palette.text.disabled}; 
-         }
+    a: {
+      textDecoration: 'none',
+      display: 'flex',
+      gap: '1rem',
 
-         .green-border-active {
-            width: 5px;
-            height: 35px;
-            background-color: ${props => props.theme.palette.primary.main};
-            border-top-right-radius: 8px;
-            border-bottom-right-radius: 8px;
-         }
-      }
+      '.text': {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '.8rem',
+      },
 
-      .active {
-         svg {
-            color: ${props => props.theme.palette.primary.light};
-         }
+      '.green-border-active': {
+        width: '5px',
+        height: '35px',
+        borderTopRightRadius: '8px',
+        borderBottomRightRadius: '8px',
+      },
+    },
 
-         .text {
-            color: ${props => props.theme.palette.primary.contrastText};
-         }
+    '.active': {
+      svg: {
+      },
 
-         .green-border-active {
-            background-color: ${props => props.theme.palette.primary.light};
-         }
-      }
-   }
-`
+      '.text': {
+      },
+
+      '.green-border-active': {
+      },
+    },
+  },
+}))

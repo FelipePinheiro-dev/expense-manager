@@ -1,11 +1,9 @@
-import './styles/global.css'
-
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import { ThemeProvider } from '@mui/material'
+import { ThemeProvider, CssBaseline } from '@mui/material'
 import { NotificationsProvider } from '@toolpad/core/useNotifications'
-import theme from './styles/theme.ts'
+import { theme } from './styles/theme.ts'
 import { AppRoutes } from './routes/AppRoutes.tsx'
 
 import { Provider } from 'react-redux'
@@ -17,6 +15,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <PersistGate persistor={persistor}>
           <NotificationsProvider>
             <AppRoutes/>

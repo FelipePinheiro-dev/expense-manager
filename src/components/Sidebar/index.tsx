@@ -1,4 +1,4 @@
-import { GridViewRounded, ReceiptLong, /*BarChart*/ AccountBalance } from '@mui/icons-material'
+import { GridViewRounded, ReceiptLong, AccountBalance } from '@mui/icons-material'
 import { NavLink } from 'react-router-dom'
 import { SidebarContainer } from './styles'
 import { LogoApp } from '../LogoApp'
@@ -6,7 +6,7 @@ import { Avatar } from '../Avatar'
 
 export function Sidebar() {
     return (
-        <SidebarContainer >   
+        <SidebarContainer>   
             <LogoApp/>
             <span className='subtitle'>Menu</span>
 

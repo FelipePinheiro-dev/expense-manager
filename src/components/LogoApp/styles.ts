@@ -1,20 +1,18 @@
 import styled from '@emotion/styled'
 
-export const LogoAppContainer = styled.span`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: .8rem;
-    padding: 2rem;
+export const LogoAppContainer = styled('span')(({ theme }) => ({
+  width: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '.8rem',
+  padding: '2rem',
 
-    > svg {
-        color: ${props => props.theme.palette.primary.light};
-    }   
+  '> svg': {
+    color: theme.palette.customColors['green-200'],
+  },
 
-    > h1 {
-        font-size: 1.2rem;
-        color: ${props => props.theme.palette.primary.contrastText};
-        font-weight: 400;  
-    }
-     
-`
+  '> h1': {
+    fontSize: '1.2rem',
+    fontWeight: 400,
+  },
+}))

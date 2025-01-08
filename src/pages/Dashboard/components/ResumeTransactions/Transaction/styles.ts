@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
-import * as colors from '@mui/material/colors'
-import { TypeVariant } from '.'
+import { TypeVariant } from './index'
 
 export const TransactionContainer = styled.div`
     width: 100%;
@@ -10,7 +9,7 @@ export const TransactionContainer = styled.div`
    
     > svg {
         font-size: 1.5rem;
-        color: ${props => props.theme.palette.primary.light};
+       
     }
 `
 
@@ -31,9 +30,9 @@ export interface PropsType {
 }
 
 export const TypeCurrency = styled.span<PropsType>`
-    color: ${props => props.type === 'expense' ? colors.red[500] : colors.blue[500]};
+    
 
     > svg {
-        color: ${props => props.type === 'expense' ? colors.red[500] : colors.blue[500]};
+       
     }
 ` 
