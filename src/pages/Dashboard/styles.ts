@@ -2,11 +2,17 @@ import styled from '@emotion/styled'
 
 export const DashboardContainer = styled.div`
   width: 100%;
+  max-height: 100vh;
 
   display: grid;
   grid-template-columns: 20rem 1fr;
   gap: .75rem;
   padding: 1.2rem 1rem;
+
+  
+  > * {
+    border: 1px solid red;
+  }
 `
 export const Content = styled.div`
     display: flex;
@@ -27,36 +33,4 @@ export const ChartContainer = styled.div`
   
   border-radius: 8px;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-`
-
-interface PropsTotalCard {
-  variant: 'blue' | 'red'
-}
-
-export  const TotalCard = styled.div<PropsTotalCard>`
-  width: 100%;
-  padding: 1.2rem 1rem;
-
-  border-radius: 8px;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-
- 
-
-
-  display: flex;
-  flex-direction: column;
-  gap: .75rem;
-
-  .currency {
-    display: flex;    
-    align-items: center;
-    gap: 1rem;
-    font-size: 2.2rem;
-    font-weight: bold;
-   
-
-    svg {
-     
-    }
-  }
 `

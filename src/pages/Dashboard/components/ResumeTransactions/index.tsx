@@ -1,5 +1,5 @@
 import { ResumeTransactionsContainer } from './styles'
-import { Transaction } from './Transaction'
+import { Transaction } from './components/Transaction'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../../redux/store'
 

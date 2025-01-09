@@ -1,7 +1,7 @@
 import { useCustomSelector } from './useSelector'
 import { useMemo } from 'react'
 
-export function useTotais() {
+export function useTotals() {
     const { transactions } = useCustomSelector((state) => state.transactions)
     
     const accumulator = useMemo(() => {
@@ -14,7 +14,7 @@ export function useTotais() {
     
             return acc
         }, { totIncome: 0, totExpense: 0})
-    }, transactions)
+    }, [transactions])
 
     return accumulator
 }

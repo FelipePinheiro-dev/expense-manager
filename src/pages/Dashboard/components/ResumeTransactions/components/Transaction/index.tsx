@@ -1,6 +1,6 @@
 import { ArrowCircleUp, ArrowCircleDown } from '@mui/icons-material'
 import { TransactionContainer, LayoutDefault, LayoutLeft, TypeCurrency } from './styles'
-import { formatCurrency } from '../../../../../formats/formatCurrency'
+import { formatCurrency } from '../../../../../../formats/formatCurrency'
 import dayjs from 'dayjs'
 export type TypeVariant = 'income' | 'expense'
 
