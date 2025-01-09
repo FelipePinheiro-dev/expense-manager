@@ -27,14 +27,6 @@ export function Sidebar() {
                     </div>
                 </NavLink>
 
-               {/*<NavLink to='/analytics'>
-                    <span className='green-border-active'></span>
-                    <div className='text'>
-                        <BarChart/>
-                        <span>Analytics</span>
-                    </div>
-                </NavLink>*/}
-
                 <NavLink to='/transactions'>
                     <span className='green-border-active'></span>
                     <div className='text'>

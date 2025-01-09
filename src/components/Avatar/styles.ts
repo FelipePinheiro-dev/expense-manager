@@ -1,26 +1,25 @@
 import styled from '@emotion/styled'
 
-export const AvatarContainer = styled.span`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .8rem;
-    
-    border-top: 1px solid ${props => props.theme.palette.primary.light};
+export const AvatarContainer = styled('span')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '0.8rem',
+  
+  borderTop: `1px solid ${theme.palette.customColors['gray-800']}`,
 
-    > img {
-        width: 42px;
-    }
+  '> img': {
+    width: '42px',
+  },
 
-    > .author {
-        display: flex;
-        flex-direction: column;
-        font-size: .8rem;
-        
-        color: ${props => props.theme.palette.primary.contrastText};
+  '> .author': {
+    display: 'flex',
+    flexDirection: 'column',
+    fontSize: '0.8rem',
+    color: theme.palette.customColors['white'],
 
-        span {
-            color: #F5F5F5;
-        }
-    }
-`
+    span: {
+      color: theme.palette.customColors['gray-600'],
+    },
+  },
+}))

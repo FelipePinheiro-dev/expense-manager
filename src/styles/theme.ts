@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles'
+import { createTheme } from '@mui/material'
 import '@mui/x-date-pickers/themeAugmentation'
 
 declare module '@mui/material/styles' {
@@ -55,8 +55,7 @@ export const theme = createTheme({
       'red-500':    '#ec1e1e'
     }
   },
-
-  components: {  
+  components: { 
     MuiPickersDay: {
       styleOverrides: {
         root: {

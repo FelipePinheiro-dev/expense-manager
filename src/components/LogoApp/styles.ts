@@ -13,6 +13,7 @@ export const LogoAppContainer = styled('span')(({ theme }) => ({
 
   '> h1': {
     fontSize: '1.2rem',
+    color: theme.palette.customColors['white'],
     fontWeight: 400,
   },
 }))
