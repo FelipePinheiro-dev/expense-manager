@@ -1,10 +1,10 @@
 import { Card, CardContent, Box, Typography, styled } from '@mui/material'
 
-export const TotalExpensesCardContainer = styled(Card)(({ theme }) => ({
+export const MostExpensiveCardContainer = styled(Card)(({ theme }) => ({
     border: `1px solid ${theme.palette.customColors['gray-200']}`
 }))
 
-export const TotalExpensesCardContent = styled(CardContent)(({ theme }) => ({
+export const MostExpensiveCardContent = styled(CardContent)(({ theme }) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
@@ -19,7 +19,9 @@ export const TotalExpensesCardContent = styled(CardContent)(({ theme }) => ({
     }
 }))
 
-export const TotalExpensesBox = styled(Box)({
+export const MostExpensiveName = styled(Typography)({})
+
+export const MostExpensiveBox = styled(Box)({
     display: 'flex',    
     alignItems: 'center',
     gap: '.3rem',
@@ -27,7 +29,7 @@ export const TotalExpensesBox = styled(Box)({
     fontWeight: 'bold',
 })
 
-export const TotalExpensesTypography = styled(Typography)(({ theme }) => ({
+export const MostExpensiveTypography = styled(Typography)(({ theme }) => ({
     color: theme.palette.customColors['gray-600'],
     display: 'flex',    
     alignItems: 'center',

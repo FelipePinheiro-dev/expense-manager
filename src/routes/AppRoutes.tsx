@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { OutletDefault } from '../outlets/OutletDefault'
+import { OutletDefault } from '../pages/_outlets/OutletDefault'
 import { Dashboard } from '../pages/Dashboard'
 import { Details } from '../pages/Details'
 // import { Analytics } from '../pages/Analytics'

@@ -1,17 +1,17 @@
-import styled from '@emotion/styled'
+import { styled, Card, CardContent } from '@mui/material'
 
+export const ResumeTransactionsContainer = styled(Card)(({ theme }) => ({
+    border: `1px solid ${theme.palette.customColors['gray-200']}`,
+    overflow: 'auto',
+}))
 
-export const ResumeTransactionsContainer = styled.div`
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    gap: .8rem;
-    padding: .75rem 1rem;
-
-    border-radius: 8px;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-
-    .title {
+export const ResumeTransactionsContent = styled(CardContent)({ 
+    display: 'flex',
     
-    }
-`
+    flexDirection: 'column',
+    gap: '0.8rem',
+    padding: '0.75rem 1rem',
+    borderRadius: '8px',
+})
+    
+

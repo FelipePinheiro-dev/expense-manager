@@ -1,18 +1,18 @@
 import { 
     DashboardContainer, 
     Content,
-    ChartContainer,
-    TotalContainerStyles,
+    ChartsContainer,
+    CardsContainer,
 } from './styles'
 
 import { TotalIncomesCard } from './components/TotalIncomesCard'
 import { TotalExpensesCard } from './components/TotalExpensesCard'
+import {  MostExpensiveCard } from './components/MostExpensiveCard'
+import { FavoriteCategoryCard } from './components/FavoriteCategoryCard'
+import { ExpenseveInPeriodChart } from './components/ExpenseveInPeriodChart'
 
 
 import { ResumeTransactions } from './components/ResumeTransactions'
-import { BasicPie } from './components/BasicPie'
-import { BasicBar } from './components/BasicBar'
-
 
 export function Dashboard() {
     return (
@@ -20,15 +20,16 @@ export function Dashboard() {
             <ResumeTransactions/>
             
             <Content>
-                <TotalContainerStyles>
+                <CardsContainer>
                     <TotalIncomesCard/>
                     <TotalExpensesCard/>
-                </TotalContainerStyles>
+                    <MostExpensiveCard/>
+                    <FavoriteCategoryCard/>
+                </CardsContainer>
 
-                <ChartContainer>
-                    <BasicPie/>
-                    <BasicBar/>
-                </ChartContainer>
+                <ChartsContainer>
+                    <ExpenseveInPeriodChart/>
+                </ChartsContainer>
             </Content>
         </DashboardContainer>
     )

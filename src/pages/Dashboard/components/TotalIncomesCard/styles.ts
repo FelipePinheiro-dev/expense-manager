@@ -6,6 +6,9 @@ export const TotalIncomesCardContainer = styled(Card)(({ theme }) => ({
 
 export const TotalIncomesCardContent = styled(CardContent)(({ theme }) => ({
     height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
 
     '.red': {
         color: theme.palette.customColors['red-500'] 
@@ -13,6 +16,10 @@ export const TotalIncomesCardContent = styled(CardContent)(({ theme }) => ({
 
     '.green': {
         color: theme.palette.customColors['green-200'] 
+    },
+
+    '&:hover': {
+        backgroundColor: theme.palette.customColors.hover,
     }
 }))
 
@@ -20,7 +27,7 @@ export const TotalIncomesBox = styled(Box)({
     display: 'flex',    
     alignItems: 'center',
     gap: '.3rem',
-    fontSize: '2rem',
+    fontSize: '1.6rem',
     fontWeight: 'bold',
 })
 

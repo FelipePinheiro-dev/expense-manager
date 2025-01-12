@@ -1,13 +1,13 @@
-import { OutletDefaultContainer } from './styles'
-import { Sidebar } from '../../components/Sidebar'
-import { Filters } from '../../components/Filters'
+import { OutletDefaultContainer, BoxContainer } from './styles'
+import { Sidebar } from '@/components/Sidebar'
+import { Filters } from '@/components/Filters'
 
 import { Outlet } from 'react-router-dom'
 import { useEffect } from 'react'
 
-import { fetchTransactions } from '../../redux/slices/transactionsSlice'
+import { fetchTransactions } from '@/redux/slices/transactionsSlice'
 import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../../redux/store'
+import { AppDispatch } from '@/redux/store'
 
 export function OutletDefault() {
     const dispatch = useDispatch<AppDispatch>()
@@ -19,10 +19,10 @@ export function OutletDefault() {
     return (
         <OutletDefaultContainer>
             <Sidebar/>
-            <div className='main'>
+            <BoxContainer>
                 <Filters/>
                 <Outlet/>
-            </div>
+            </BoxContainer>
         </OutletDefaultContainer>
     )
 }

@@ -16,7 +16,7 @@ export function TotalIncomesCard() {
         <TotalIncomesCardContainer>
             <TotalIncomesCardContent>
                  <TotalIncomesTypography>
-                    Total Incomes
+                    Total Incomes (month)
                 </TotalIncomesTypography>
                 
                 <TotalIncomesBox>

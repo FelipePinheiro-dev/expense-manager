@@ -1,14 +1,13 @@
 import styled from '@emotion/styled'
 
-export const FiltersContainer = styled.header`
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    gap: 2rem;
-    padding: 0 1rem;
-    border-bottom: 1px solid #E5E5E5;
+export const FiltersContainer = styled('header')(({ theme}) => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'end',
+    borderBottom: `1px solid ${theme.palette.customColors['gray-200']}`,
     
-    span {
-        width: 20%;
+    span: {
+      width: '20%',
     }
-`
+}))
+  

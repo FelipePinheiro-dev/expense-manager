@@ -5,6 +5,7 @@ declare module '@mui/material/styles' {
   interface Palette {
     customColors: {
       white: string,
+      hover: string,
 
       'gray-200': string,
       'gray-400': string,
@@ -22,6 +23,7 @@ declare module '@mui/material/styles' {
   interface PaletteOptions {
     customColors: {
       white: string,
+      hover: string,
 
       'gray-200': string,
       'gray-400': string,
@@ -40,8 +42,15 @@ declare module '@mui/material/styles' {
 
 export const theme = createTheme({
   palette: {
+    primary: {
+      main: '#275347',
+      dark: '#1b3a2e', 
+      light: '#3a6b5a', 
+      contrastText: '#FFFFFF',
+    },
     customColors: {
       white: '#FFFFFF',
+      hover: '#F4F4F4',
 
       'gray-200': '#e8e7e1',
       'gray-400': '#757772',
@@ -55,7 +64,7 @@ export const theme = createTheme({
       'red-500':    '#ec1e1e'
     }
   },
-  components: { 
+  components: {
     MuiPickersDay: {
       styleOverrides: {
         root: {

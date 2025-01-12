@@ -1,4 +1,4 @@
-import { ResumeTransactionsContainer } from './styles'
+import { ResumeTransactionsContainer, ResumeTransactionsContent } from './styles'
 import { Transaction } from './components/Transaction'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../../redux/store'
@@ -9,12 +9,14 @@ export function ResumeTransactions() {
 
   return (
     <ResumeTransactionsContainer>
+      <ResumeTransactionsContent>
         <span className='title'>Transactions</span>
-        { onlyn10Transactions &&
-          onlyn10Transactions.map((item) => (
-             <Transaction key={item.id} props={item}/> 
-          ))
-        }
+          { onlyn10Transactions &&
+            onlyn10Transactions.map((item) => (
+              <Transaction key={item.id} props={item}/> 
+            ))
+          }
+      </ResumeTransactionsContent>
     </ResumeTransactionsContainer>
   )
 }

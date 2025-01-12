@@ -1,38 +1,42 @@
-import styled from '@emotion/styled'
-import { TypeVariant } from './index'
+import { styled, Card, CardContent } from '@mui/material'
 
-export const TransactionContainer = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-   
-    > svg {
-        font-size: 1.5rem;
-       
+export const TransactionContainer = styled(Card)({})
+
+export const TransactionContent = styled(CardContent)(({ theme }) => ({
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1rem',
+    border: `1px solid ${theme.palette.customColors['gray-200']}`,
+
+    '> svg': {
+        fontSize: '1.5rem',
+    },
+
+    '.up': {
+        color: theme.palette.customColors['green-200'],
+    },
+
+    '.down': {
+        color: theme.palette.customColors['red-500'],
+    },
+
+    '&:hover': {
+        backgroundColor: theme.palette.customColors.hover,
     }
-`
+}))
 
-export const LayoutDefault = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: .3rem;        
-`
+export const LayoutDefault = styled('div')({
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '.3rem',
 
-export const LayoutLeft = styled(LayoutDefault)`
-    flex: 1;
-    align-items: flex-end;
-`
-
-
-export interface PropsType {
-    type: TypeVariant
-}
-
-export const TypeCurrency = styled.span<PropsType>`
-    
-
-    > svg {
-       
+    time: {
+        fontSize: '.7rem',
     }
-` 
+})
+
+export const LayoutLeft = styled(LayoutDefault)({
+    flex: 1,
+    alignItems: 'flex-end',
+})
