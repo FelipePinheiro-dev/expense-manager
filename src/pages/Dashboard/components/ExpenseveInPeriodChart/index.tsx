@@ -108,7 +108,7 @@ export function ExpenseveInPeriodChart() {
                                 })}
                             />
                             
-                            <CartesianGrid vertical={false} className='stroke-muted'/>
+                            <CartesianGrid vertical={false}/>
                             <Tooltip content={ <CustomTooltip /> }/>
                             <Line 
                                 type='linear' 

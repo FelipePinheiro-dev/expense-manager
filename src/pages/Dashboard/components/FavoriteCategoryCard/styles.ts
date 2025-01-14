@@ -6,6 +6,7 @@ export const FavoriteCategoryCardContainer = styled(Card)(({ theme }) => ({
 
 export const FavoriteCategoryCardContent = styled(CardContent)(({ theme }) => ({
     height: '100%',
+    minWidth: '17.5rem',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',

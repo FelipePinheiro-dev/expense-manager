@@ -3,7 +3,7 @@ import { styled, Card } from '@mui/material'
 
 export const CardContainer = styled(Card)(({ theme }) => ({
     border: `1px solid ${theme.palette.customColors['gray-200']}`,
-    maxWidth: '37.5rem',
+    gridColumn: 'span 6',
 }))
 
 export const CustomTooltipContainer = styled('div')(({ theme }) => ({

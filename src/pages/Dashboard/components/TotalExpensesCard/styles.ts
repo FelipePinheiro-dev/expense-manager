@@ -6,6 +6,7 @@ export const TotalExpensesCardContainer = styled(Card)(({ theme }) => ({
 
 export const TotalExpensesCardContent = styled(CardContent)(({ theme }) => ({
     height: '100%',
+    minWidth: '17.5rem',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',

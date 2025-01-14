@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import { Box, styled} from '@mui/material'
 
 export const DashboardContainer = styled('div')({
   width: '100%',
@@ -15,11 +15,14 @@ export const Content = styled('div')({
   gap: '1rem',
 })
 
-export const CardsContainer = styled('div')({
+export const CardsContainer = styled(Box)({
   display: 'flex',
+  justifyContent: 'space-between',
   gap: '1rem',
 })
 
-export const ChartsContainer = styled('div')({
-  
+export const ChartsContainer = styled(Box)({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(9, 1fr)',
+  gap: '1rem',
 })
