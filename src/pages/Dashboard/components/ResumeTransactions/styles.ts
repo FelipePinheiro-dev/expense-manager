@@ -2,7 +2,11 @@ import { styled, Card, CardContent } from '@mui/material'
 
 export const ResumeTransactionsContainer = styled(Card)(({ theme }) => ({
     border: `1px solid ${theme.palette.customColors['gray-200']}`,
-    overflow: 'auto',
+    overflowY: 'auto',
+
+    '@media(min-height: 1300px)': {
+        height: 'max-content'
+    }
 }))
 
 export const ResumeTransactionsContent = styled(CardContent)({ 

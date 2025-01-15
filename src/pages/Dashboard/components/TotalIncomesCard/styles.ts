@@ -1,7 +1,7 @@
 import { Card, CardContent, Box, Typography, styled } from '@mui/material'
 
 export const TotalIncomesCardContainer = styled(Card)(({ theme }) => ({
-    border: `1px solid ${theme.palette.customColors['gray-200']}`
+    border: `1px solid ${theme.palette.customColors['gray-200']}`,
 }))
 
 export const TotalIncomesCardContent = styled(CardContent)(({ theme }) => ({

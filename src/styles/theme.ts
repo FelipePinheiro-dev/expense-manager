@@ -62,7 +62,7 @@ export const theme = createTheme({
       'green-800':  '#092c1c',
       'orange-500': '#f7a23f',
       'red-500':    '#ec1e1e'
-    }
+    },
   },
   components: {
     MuiPickersDay: {
