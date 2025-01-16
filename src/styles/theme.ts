@@ -64,6 +64,7 @@ export const theme = createTheme({
       'red-500':    '#ec1e1e'
     },
   },
+  
   components: {
     MuiPickersDay: {
       styleOverrides: {

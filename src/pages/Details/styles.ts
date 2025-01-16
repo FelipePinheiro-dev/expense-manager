@@ -1,23 +1,5 @@
-import styled from '@emotion/styled'
+import { styled } from '@mui/material'
 
-export const DetailsContainer = styled.div`
-    .container-pagination {
-        display: flex;
-        align-items: center;
-        max-width: 52.5rem;
-        margin: 2rem auto;
-    }
-`
-
-export const SearchContainer = styled.div`
-    width: 100%;
-    max-width: 52.5rem;
-    margin: 2rem auto;
+export const DetailsContainer = styled('div')(({ theme }) => ({
     
-    display: flex;
-    gap: 1rem;
-
-    .container-search {
-        flex: 1;
-    }    
-`
+}))

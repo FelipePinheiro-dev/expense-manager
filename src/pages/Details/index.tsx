@@ -1,51 +1,89 @@
-import { FormControl, InputLabel, OutlinedInput } from '@mui/material'
-import { LoadingButton } from '@mui/lab'
-import { DetailsContainer, SearchContainer } from './styles'
-
-import { Table } from './components/Table'
-import { Search } from '@mui/icons-material'
+import { DATA, TypeData } from '@/mocks/data'
+import { useReactTable, ColumnDef, getCoreRowModel, flexRender } from '@tanstack/react-table'
 import { useState } from 'react'
-import { Pagination } from '@mui/material'
-import { Stack } from '@mui/material'
+import { DetailsContainer } from './styles'
+import { format } from 'date-fns'
 
+function formatDatePtBR(date: string) {
+    const formatted = format(date, 'dd MMM yyyy')
+    return formatted
+}
+
+const columns: ColumnDef<TypeData>[] = [
+    {
+        accessorKey: 'id',
+        header: 'ID',
+        cell: (props) => <span>{String(props.getValue())}</span>
+    },
+
+    {
+        accessorKey: 'title',
+        header: 'Title',
+        cell: (props) => <span>{String(props.getValue())}</span>
+    },
+
+    {
+        accessorKey: 'category',
+        header: 'Category',
+        cell: (props) => <span>{String(props.getValue())}</span>
+    },
+
+    {
+        accessorKey: 'type',
+        header: 'Type',
+        cell: (props) => <span>{String(props.getValue())}</span>
+    },
+
+    {
+        accessorKey: 'value',
+        header: 'Value',
+        cell: (props) => <span>{String(props.getValue())}</span>
+    },
+
+    {
+        accessorKey: 'date',
+        header: 'Date',
+        cell: (props) => <span>{formatDatePtBR(String(props.getValue()))}</span>
+    },
+
+]
 
 export function Details() {
-    const [ loading, setLoading ] = useState(false)
-
-    function handleClick() {
-        setLoading(!loading)
-    }
+    const [ data, setData ] = useState(DATA)
+    const table = useReactTable({
+        data,
+        columns,
+        getCoreRowModel:getCoreRowModel()
+    })
 
     return (
         <DetailsContainer>
-            <SearchContainer>
-                <FormControl className='container-search'>
-                    <InputLabel htmlFor="search">Search transaction</InputLabel>
-                    <OutlinedInput
-                        size='small'
-                        id="search"
-                        defaultValue=""
-                        label="Search transaction"
-                    />
-                </FormControl>
-
-                <LoadingButton
-                    size="medium"
-                    onClick={handleClick}
-                    endIcon={<Search/>}
-                    loading={loading}
-                    loadingPosition="end"
-                    variant="contained"
-                    >
-                    Search
-                </LoadingButton>
-            </SearchContainer>
-            
-            <Table/>
-
-            <Stack spacing={2} className='container-pagination'>
-                <Pagination count={10} variant='outlined' shape='rounded'/>
-            </Stack>
+            <table width={table.getTotalSize()} className='table'>
+                <thead>
+                    {table.getHeaderGroups().map((headerGroup) => 
+                        <tr key={headerGroup.id} className='tr'> 
+                            {headerGroup.headers.map(
+                                header => 
+                                    <th className='th'  key={header.id} style={{ width: header.getSize()}}>
+                                        {String(header.column.columnDef.header)}
+                                    </th>
+                            )}
+                        </tr>
+                    )}
+                </thead>
+                <tbody>
+                    {
+                        table.getRowModel().rows.map((row) => <tr key={row.id}>
+                            {row.getVisibleCells().map((cell) => <td key={cell.id} className='td' style={{ width: cell.column.getSize()}}>
+                                {flexRender(
+                                    cell.column.columnDef.cell,
+                                    cell.getContext()
+                                )}
+                            </td>)}
+                        </tr>)
+                    }
+                </tbody>
+            </table>
         </DetailsContainer>
     )
 }

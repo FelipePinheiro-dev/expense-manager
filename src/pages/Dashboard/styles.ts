@@ -39,5 +39,3 @@ export const ChartsContainer = styled(Box)({
   gridTemplateColumns: 'repeat(9, 1fr)',
   gap: '1rem',
 })
-
-export const AbsoluteScrollControl = styled(Box)(({ theme }) => ({}))

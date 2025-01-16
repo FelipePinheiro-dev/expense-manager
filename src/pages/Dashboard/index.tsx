@@ -3,7 +3,6 @@ import {
     Content,
     ChartsContainer,
     CardsContainer,
-    AbsoluteScrollControl,
 } from './styles'
 
 import { TotalIncomesCard } from './components/TotalIncomesCard'
@@ -37,10 +36,6 @@ export function Dashboard() {
 
                 <NumberTransactionsEachCategoryChart/>
             </Content>
-
-            <AbsoluteScrollControl>
-                
-            </AbsoluteScrollControl>
         </DashboardContainer>
     )
 }
