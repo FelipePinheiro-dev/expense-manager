@@ -1,11 +1,23 @@
+import { 
+    DetailsContainer, 
+    TableContainerStyled,
+    TableStyled,
+    TableHeadStyled,
+    TableBodyStyled,
+    TableRowStyled,
+    TableCellStyled    
+} from './styles'
+
+import { UpdateTableCell } from './components/UpdateTableCell'
+
 import { DATA, TypeData } from '@/mocks/data'
 import { useReactTable, ColumnDef, getCoreRowModel, flexRender } from '@tanstack/react-table'
 import { useState } from 'react'
-import { DetailsContainer } from './styles'
 import { format } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 
 function formatDatePtBR(date: string) {
-    const formatted = format(date, 'dd MMM yyyy')
+    const formatted = format(new Date(date), 'dd MMM yyyy', { locale: ptBR })
     return formatted
 }
 
@@ -19,7 +31,7 @@ const columns: ColumnDef<TypeData>[] = [
     {
         accessorKey: 'title',
         header: 'Title',
-        cell: (props) => <span>{String(props.getValue())}</span>
+        cell: (props) => <UpdateTableCell cell={props}/>
     },
 
     {
@@ -53,37 +65,65 @@ export function Details() {
     const table = useReactTable({
         data,
         columns,
-        getCoreRowModel:getCoreRowModel()
+        getCoreRowModel:getCoreRowModel(),
+        columnResizeMode: 'onChange',
+        meta: {
+            updateData: (rowIndex: number, columnId: string, value: string | number) => setData(
+                prev => prev.map((row, index) => 
+                    index === rowIndex ? {
+                        ...prev[rowIndex],
+                        [columnId]: value
+                    } : row
+                )
+            )
+        }
     })
-
+    console.log(data)
     return (
         <DetailsContainer>
-            <table width={table.getTotalSize()} className='table'>
-                <thead>
-                    {table.getHeaderGroups().map((headerGroup) => 
-                        <tr key={headerGroup.id} className='tr'> 
-                            {headerGroup.headers.map(
-                                header => 
-                                    <th className='th'  key={header.id} style={{ width: header.getSize()}}>
-                                        {String(header.column.columnDef.header)}
-                                    </th>
-                            )}
-                        </tr>
-                    )}
-                </thead>
-                <tbody>
-                    {
-                        table.getRowModel().rows.map((row) => <tr key={row.id}>
-                            {row.getVisibleCells().map((cell) => <td key={cell.id} className='td' style={{ width: cell.column.getSize()}}>
-                                {flexRender(
-                                    cell.column.columnDef.cell,
-                                    cell.getContext()
+            <TableContainerStyled>
+                <TableStyled width={table.getTotalSize()} className='table'>
+                    <TableHeadStyled>
+                        {table.getHeaderGroups().map((headerGroup) => 
+                            <TableRowStyled key={headerGroup.id} className='tr'> 
+                                {headerGroup.headers.map(
+                                    header => 
+                                        <TableCellStyled 
+                                            className='th'  
+                                            key={header.id} 
+                                            style={{ width: header.getSize()}}
+                                            onMouseDown={header.getResizeHandler()}
+                                            onTouchStart={header.getResizeHandler()}
+                                        >
+                                            {String(header.column.columnDef.header)}
+                                            <div
+                                                onMouseDown={header.getResizeHandler()}
+                                                onTouchStart={header.getResizeHandler()}
+                                                className={`
+                                                    resize ${
+                                                        header.column.getIsResizing() ? 'isResizing' : ''
+                                                    }
+                                                    `}
+                                            />
+                                        </TableCellStyled>
                                 )}
-                            </td>)}
-                        </tr>)
-                    }
-                </tbody>
-            </table>
+                            </TableRowStyled>
+                        )}
+                    </TableHeadStyled>
+                    <TableBodyStyled>
+                        {
+                            table.getRowModel().rows.map((row) => <TableRowStyled key={row.id}>
+                                {row.getVisibleCells().map((cell) => <TableCellStyled key={cell.id} className='td' style={{ width: cell.column.getSize()}}>
+                                    {flexRender(
+                                        cell.column.columnDef.cell,
+                                        cell.getContext()
+                                    )}
+                                </TableCellStyled>)}
+                            </TableRowStyled>)
+                        }
+                    </TableBodyStyled>
+                </TableStyled>
+            </TableContainerStyled>
         </DetailsContainer>
     )
 }

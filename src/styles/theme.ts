@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material'
+import { borderLeft } from '@mui/system'
 import '@mui/x-date-pickers/themeAugmentation'
 
 declare module '@mui/material/styles' {

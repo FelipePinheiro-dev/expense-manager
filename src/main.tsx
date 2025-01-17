@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 
 import { ThemeProvider, CssBaseline } from '@mui/material'
 import { theme } from './styles/theme.ts'
-import { GlobalCss } from './styles/globalStyles.tsx'
+import { GlobalStyles } from './styles/GlobalStyles.tsx'
 
 import { NotificationsProvider } from '@toolpad/core/useNotifications'
 
@@ -20,7 +20,7 @@ createRoot(document.getElementById('root')!).render(
       <PersistGate persistor={persistor}>
         <ThemeProvider theme={theme}>
           <CssBaseline/>
-          <GlobalCss/>
+          <GlobalStyles/>
           <NotificationsProvider>
             <AppRoutes/>
           </NotificationsProvider>
