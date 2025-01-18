@@ -10,7 +10,7 @@ interface Props {
     table: {
         options: {
             meta: {
-                updateData: (rowIndex: string, columnId: string, value: TypeData | string) => void
+                updateData: (rowIndex: number, columnId: string, value: TypeData | string) => void
             }
         }
     }
@@ -21,7 +21,7 @@ export function UpdateTableCell({ cell, row, column, table }: Props) {
     
     function onBlur() {
         table.options.meta?.updateData(
-            row.index,
+            row.indexOf,
             column.id,
             value
         )

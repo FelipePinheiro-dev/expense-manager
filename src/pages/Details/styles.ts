@@ -16,7 +16,7 @@ export const TableContainerStyled = styled(TableContainer)(({ theme }) => ({
 
 export const TableStyled = styled(Table)(({ theme }) => ({
     margin: '2.5rem auto',
-    maxWidth: '45.5rem'
+    maxWidth: '90%'
 }))
 
 export const TableHeadStyled = styled(TableHead)(({ theme }) => ({}))

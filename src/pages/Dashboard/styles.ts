@@ -12,7 +12,7 @@ export const DashboardContainer = styled('div')({
   gap: '0.75rem',
   padding: '0.75rem',
 
-  '@media(min-width: 1900px)': {
+  '@media(min-width: 2000px)': {
     width: '70vw',
     margin: 'auto'
   }
@@ -23,7 +23,7 @@ export const Content = styled('div')({
   flexDirection: 'column',
   gap: '1rem',
 
-  '@media(min-width: 1900px)': {
+  '@media(min-width: 2000px)': {
     gap: '10rem'
   }
 })
