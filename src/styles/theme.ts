@@ -1,5 +1,4 @@
 import { createTheme } from '@mui/material'
-import { borderLeft } from '@mui/system'
 import '@mui/x-date-pickers/themeAugmentation'
 
 declare module '@mui/material/styles' {
@@ -67,6 +66,27 @@ export const theme = createTheme({
   },
   
   components: {
+    MuiButton: {
+      variants: [
+        {
+         props: { variant: 'select' },
+         style: {
+            '&:hover': {
+              backgroundColor: '#e8e7e1'
+            }
+         }
+        },
+      ],
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            backgroundColor: '#e8e7e1'
+          }
+        }
+      }
+    },
     MuiPickersDay: {
       styleOverrides: {
         root: {

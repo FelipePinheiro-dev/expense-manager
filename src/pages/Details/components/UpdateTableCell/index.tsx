@@ -1,30 +1,26 @@
-import { CellContext } from '@tanstack/react-table'
+import { CellContext, Table } from '@tanstack/react-table'
 import { TypeData } from '@/mocks/data'
 import { UpdateTableCellContainer } from './styles'
 import { useEffect, useState } from 'react'
 
 interface Props {
-    cell: CellContext<TypeData, string>,
-    row: string,
-    column: string,
-    table: {
-        options: {
-            meta: {
-                updateData: (rowIndex: number, columnId: string, value: TypeData | string) => void
-            }
-        }
-    }
+    cell: CellContext<TypeData, string | number>
+    table: Table<TypeData>
 }
-export function UpdateTableCell({ cell, row, column, table }: Props) {
+
+export function UpdateTableCell({ cell, table }: Props) {
     const initialValue = cell.getValue()
     const [ value, setValue ] = useState(initialValue)
     
     function onBlur() {
-        table.options.meta?.updateData(
-            row.indexOf,
-            column.id,
-            value
-        )
+        if(table.options.meta) {
+            // @ts-expect-error: updateData is a custom function defined in TableMeta
+            table.options.meta.updateData( 
+                cell.row.index,
+                cell.column.id,
+                value
+            )
+        }   
     }
 
     useEffect(() => {

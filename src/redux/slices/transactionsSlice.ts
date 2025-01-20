@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { api } from '../../services/api/axios'
-import { TypeCategory } from '../../constants/categories'
+import { TypeCategoriesTYPE } from '../../constants/categories'
 
 export interface PropsCreateTransactions {
     title: string,
     value: number,
-    category: TypeCategory,
+    category: TypeCategoriesTYPE,
     date: string,
     type: 'income' | 'expense'
 }

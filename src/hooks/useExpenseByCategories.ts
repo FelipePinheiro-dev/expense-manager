@@ -1,5 +1,5 @@
 import * as colors from '@mui/material/colors'
-import { TypeCategories } from '../constants/categories'
+import { TypeCategoriesENUM } from '../constants/categories'
 import { useCustomSelector } from './useSelector'
 import { useMemo } from 'react'
 
@@ -11,31 +11,31 @@ export function useExpenseByCategories() {
         return transactions.reduce((acc, transaction) => {
             if(transaction.type === 'expense') {
               switch(transaction.category) {
-                case TypeCategories.BUSINESS:
+                case TypeCategoriesENUM.BUSINESS:
                   acc[0].value += transaction.value
                   break
           
-                case TypeCategories.CLOTHINGS:
+                case TypeCategoriesENUM.CLOTHINGS:
                   acc[1].value += transaction.value
                   break
           
-                case TypeCategories.FOOD:
+                case TypeCategoriesENUM.FOOD:
                   acc[2].value += transaction.value
                   break
                 
-                case TypeCategories.LEISURE:
+                case TypeCategoriesENUM.LEISURE:
                   acc[3].value += transaction.value
                   break
                 
-                case TypeCategories.SPORTS:
+                case TypeCategoriesENUM.SPORTS:
                   acc[4].value += transaction.value
                   break
                 
-                case TypeCategories.STUDIES:
+                case TypeCategoriesENUM.STUDIES:
                   acc[5].value += transaction.value
                   break
                 
-                case TypeCategories.UTILITIES:
+                case TypeCategoriesENUM.UTILITIES:
                   acc[6].value += transaction.value
                   break
               }

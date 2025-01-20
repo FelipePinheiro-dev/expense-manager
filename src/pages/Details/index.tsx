@@ -9,6 +9,7 @@ import {
 } from './styles'
 
 import { UpdateTableCell } from './components/UpdateTableCell'
+import { UpdateCategoryCell } from './components/UpdateCategoryCell'
 
 import { DATA, TypeData } from '@/mocks/data'
 import { useReactTable, ColumnDef, getCoreRowModel, flexRender } from '@tanstack/react-table'
@@ -31,13 +32,13 @@ const columns: ColumnDef<TypeData>[] = [
     {
         accessorKey: 'title',
         header: 'Title',
-        cell: (props) => <UpdateTableCell cell={props}/>
+        cell: (props) => <UpdateTableCell cell={props} table={props.table}/>
     },
 
     {
         accessorKey: 'category',
         header: 'Category',
-        cell: (props) => <span>{String(props.getValue())}</span>
+        cell: (props) => <UpdateCategoryCell cell={props} table={props.table}/>
     },
 
     {
@@ -68,8 +69,8 @@ export function Details() {
         getCoreRowModel:getCoreRowModel(),
         columnResizeMode: 'onChange',
         meta: {
-            updateData: (rowIndex: number, columnId: string, value: string | number) => setData(
-                prev => prev.map((row, index) => 
+            updateData: (rowIndex: number, columnId: string, value: string | number) => 
+                setData(prev => prev.map((row, index) => 
                     index === rowIndex ? {
                         ...prev[rowIndex],
                         [columnId]: value

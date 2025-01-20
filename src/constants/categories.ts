@@ -1,4 +1,4 @@
-export enum TypeCategories {
+export enum TypeCategoriesENUM {
     STUDIES = 'Studies', 
     LEISURE = 'Leisure', 
     BUSINESS = 'Business', 
@@ -8,11 +8,11 @@ export enum TypeCategories {
     UTILITIES = 'Utilities'
 } 
 
-export type TypeCategory = 'Studies' | 'Leisure' | 'Business' | 'Clothings' | 'Food' | 'Sports' | 'Utilities'
+export type TypeCategoriesTYPE = 'Studies' | 'Leisure' | 'Business' | 'Clothings' | 'Food' | 'Sports' | 'Utilities'
 
 export interface PropsCategories {
-    value: TypeCategory,
-    name: TypeCategory
+    value: TypeCategoriesTYPE,
+    name: TypeCategoriesTYPE
 }
 
 export const CATEGORIES: PropsCategories[] = [
