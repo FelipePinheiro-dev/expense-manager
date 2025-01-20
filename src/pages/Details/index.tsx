@@ -30,7 +30,12 @@ const columns: ColumnDef<TypeData>[] = [
     {
         accessorKey: 'title',
         header: 'Title',
-        cell: (props) => <CellInputUpdate cell={props} table={props.table}/>
+        cell: (props) => 
+            <CellInputUpdate 
+                type='text' 
+                cell={props} 
+                table={props.table}
+            />
     },
 
     {
@@ -58,7 +63,12 @@ const columns: ColumnDef<TypeData>[] = [
     {
         accessorKey: 'value',
         header: 'Value',
-        cell: (props) => <CellInputUpdate cell={props} table={props.table}/>
+        cell: (props) => 
+            <CellInputUpdate 
+                type='number' 
+                cell={props} 
+                table={props.table}
+            />
     },
 
     {
@@ -70,14 +80,18 @@ const columns: ColumnDef<TypeData>[] = [
                 table={props.table}
             />
     },
-
 ]
 
 export function Details() {
     const [ data, setData ] = useState(DATA)
+    const [ columnFilters, setColumnFilters ] = useState<TypeData[]>([])
+
     const table = useReactTable({
         data,
         columns,
+        state: {
+            columnFilters
+        },
         getCoreRowModel:getCoreRowModel(),
         columnResizeMode: 'onChange',
         meta: {
@@ -91,7 +105,7 @@ export function Details() {
             )
         }
     })
-    console.log(data)
+
     return (
         <DetailsContainer>
             <TableContainerStyled>

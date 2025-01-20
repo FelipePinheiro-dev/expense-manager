@@ -5,10 +5,11 @@ import { useEffect, useState } from 'react'
 
 interface Props {
     cell: CellContext<TypeData, string | number>
-    table: Table<TypeData>
+    table: Table<TypeData>,
+    type: 'text' | 'number'
 }
 
-export function CellInputUpdate({ cell, table }: Props) {
+export function CellInputUpdate({ cell, table, type }: Props) {
     const initialValue = cell.getValue()
     const [ value, setValue ] = useState(initialValue)
     
@@ -29,6 +30,7 @@ export function CellInputUpdate({ cell, table }: Props) {
 
     return (
         <CellInputUpdateContainer
+            type={type}
             value={value}
             onBlur={onBlur}
             onChange={(e) => setValue(e.target.value)}

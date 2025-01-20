@@ -1,5 +1,4 @@
 import { TypeData } from '@/mocks/data'
-import { TextField } from '@mui/material'
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
 import { CellContext, Table } from '@tanstack/react-table'
@@ -8,23 +7,6 @@ interface Props {
     cell: CellContext<TypeData, string>
     table: Table<TypeData>
 }
-
-// Custom Input Component
-function CustomInput(props: any) {
-    const { inputRef, inputProps, ...other } = props;
-  
-    return (
-      <TextField
-        {...other}
-        inputRef={inputRef}
-        InputProps={{
-          ...inputProps,
-          style: { fontSize: '14px', padding: '8px' },
-        }}
-        variant="outlined"
-      />
-    );
-  }
 
 export function CellDateUpdate({ cell, table }: Props) { 
     const currentDate = new Date(cell.getValue())
@@ -36,7 +18,6 @@ export function CellDateUpdate({ cell, table }: Props) {
             <DatePicker
                 format='dd MMM yy'
                 defaultValue={currentDate}
-                //slots={{ field: <span>seila</span>}}
                 onChange={(date) => 
                     updateData(
                         cell.row.index, 
