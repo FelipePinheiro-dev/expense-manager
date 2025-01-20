@@ -4,7 +4,7 @@
       "id": "1c52",
       "title": "Hamburger",
       "value": 50,
-      "category": "Food",
+      "category": "food",
       "date": "2024-12-10T14:36:38.296Z",
       "type": "expense"
     },
@@ -12,7 +12,7 @@
       "id": "19f6",
       "title": "Banana",
       "value": 10,
-      "category": "Food",
+      "category": "food",
       "date": "2024-12-10T15:28:01.996Z",
       "type": "expense"
     },
@@ -20,14 +20,14 @@
       "id": "3b91",
       "title": "Cotefacil",
       "value": 2400,
-      "category": "Business",
+      "category": "business",
       "date": "2024-12-31T17:59:14.234Z",
       "type": "income"
     },
     {
       "title": "Fees",
       "value": 2000,
-      "category": "Business",
+      "category": "business",
       "date": "2024-10-12T19:33:52.518Z",
       "type": "income",
       "id": "D6rSGXa"
@@ -35,7 +35,7 @@
     {
       "title": "Cotefacil",
       "value": 819,
-      "category": "Business",
+      "category": "business",
       "date": "2024-11-19T19:33:52.518Z",
       "type": "income",
       "id": "ZpONm96"
@@ -43,7 +43,7 @@
     {
       "title": "Fees",
       "value": 500,
-      "category": "Business",
+      "category": "business",
       "date": "2024-11-13T19:33:52.518Z",
       "type": "income",
       "id": "bfgebxH"
@@ -51,7 +51,7 @@
     {
       "title": "Vivo",
       "value": 61.54,
-      "category": "Utilities",
+      "category": "utilities",
       "date": "2024-12-05T19:33:52.518Z",
       "type": "expense",
       "id": "jgmEjbZ"
@@ -59,7 +59,7 @@
     {
       "title": "Estacio",
       "value": 200,
-      "category": "Studies",
+      "category": "studies",
       "date": "2024-12-06T19:33:52.518Z",
       "type": "expense",
       "id": "6fAY8I-"
@@ -67,7 +67,7 @@
     {
       "title": "Luz",
       "value": 159,
-      "category": "Utilities",
+      "category": "utilities",
       "date": "2024-12-06T19:33:52.518Z",
       "type": "expense",
       "id": "SdICSQY"
@@ -75,7 +75,7 @@
     {
       "title": "Chicken",
       "value": 20,
-      "category": "Food",
+      "category": "food",
       "date": "2024-12-07T20:39:02.162Z",
       "type": "expense",
       "id": "vaa28bf"
@@ -83,7 +83,7 @@
     {
       "title": "Shorts",
       "value": 59,
-      "category": "Clothings",
+      "category": "clothings",
       "date": "2024-11-04T19:53:29.628Z",
       "type": "expense",
       "id": "eVmQrHq"
@@ -91,7 +91,7 @@
     {
       "title": "Rocketseat",
       "value": 166,
-      "category": "Studies",
+      "category": "studies",
       "date": "2024-12-06T19:53:29.628Z",
       "type": "expense",
       "id": "KFxHNPR"
@@ -99,7 +99,7 @@
     {
       "title": "Testando",
       "value": 245126,
-      "category": "Clothings",
+      "category": "clothings",
       "date": "2025-01-15T21:10:46.711Z",
       "type": "income",
       "id": "9yswMwX"
@@ -107,7 +107,7 @@
     {
       "title": "Testando",
       "value": 500,
-      "category": "Business",
+      "category": "business",
       "date": "2025-01-06T21:20:32.968Z",
       "type": "expense",
       "id": "lDQHXPa"
@@ -115,7 +115,7 @@
     {
       "title": "Teste",
       "value": 500,
-      "category": "Clothings",
+      "category": "clothings",
       "date": "2025-01-06T21:20:32.968Z",
       "type": "income",
       "id": "DAEgK_d"

@@ -3,7 +3,7 @@ export const DATA = [
       id: '1c52',
       title: 'Hamburger',
       value: 50,
-      category: 'Food',
+      category: 'food',
       date: '2024-12-10T14:36:38.296Z',
       type: 'expense'
     },
@@ -11,7 +11,7 @@ export const DATA = [
         id: '1eqweqw',
         title: 'Hamburger',
         value: 50,
-        category: 'Food',
+        category: 'food',
         date: '2024-12-10T14:36:38.296Z',
         type: 'expense'
       },
@@ -19,7 +19,7 @@ export const DATA = [
         id: 'fsadfh',
         title: 'Hamburger',
         value: 50,
-        category: 'Food',
+        category: 'food',
         date: '2024-12-10T14:36:38.296Z',
         type: 'expense'
       },
@@ -27,7 +27,7 @@ export const DATA = [
         id: 'eqwrwtr',
         title: 'Hamburger',
         value: 50,
-        category: 'Food',
+        category: 'food',
         date: '2024-12-10T14:36:38.296Z',
         type: 'expense'
       },
@@ -35,7 +35,7 @@ export const DATA = [
         id: 'hfgsdg',
         title: 'Hamburger',
         value: 50,
-        category: 'Food',
+        category: 'food',
         date: '2024-12-10T14:36:38.296Z',
         type: 'expense'
       },
@@ -43,7 +43,7 @@ export const DATA = [
         id: 'sdsdqaw',
         title: 'Hamburger',
         value: 50,
-        category: 'Food',
+        category: 'food',
         date: '2024-12-10T14:36:38.296Z',
         type: 'expense'
       },
@@ -51,7 +51,7 @@ export const DATA = [
         id: '1dsd',
         title: 'Hamburger',
         value: 50,
-        category: 'Food',
+        category: 'food',
         date: '2024-12-10T14:36:38.296Z',
         type: 'expense'
       }

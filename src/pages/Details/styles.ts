@@ -12,11 +12,14 @@ export const DetailsContainer = styled('div')(({ theme }) => ({}))
 
 export const TableContainerStyled = styled(TableContainer)(({ theme }) => ({
     width: '100%',
+    height: '100%',
+    maxHeight: 'calc(100vh - 6.25rem)',
+    overflow: 'auto'
 }))
 
 export const TableStyled = styled(Table)(({ theme }) => ({
     margin: '2.5rem auto',
-    maxWidth: '90%'
+    maxWidth: '90%',
 }))
 
 export const TableHeadStyled = styled(TableHead)(({ theme }) => ({}))

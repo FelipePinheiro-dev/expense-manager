@@ -1,6 +1,6 @@
 import { CellContext, Table } from '@tanstack/react-table'
 import { TypeData } from '@/mocks/data'
-import { UpdateTableCellContainer } from './styles'
+import { CellInputUpdateContainer } from './styles'
 import { useEffect, useState } from 'react'
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
     table: Table<TypeData>
 }
 
-export function UpdateTableCell({ cell, table }: Props) {
+export function CellInputUpdate({ cell, table }: Props) {
     const initialValue = cell.getValue()
     const [ value, setValue ] = useState(initialValue)
     
@@ -28,7 +28,7 @@ export function UpdateTableCell({ cell, table }: Props) {
     }, [initialValue])
 
     return (
-        <UpdateTableCellContainer
+        <CellInputUpdateContainer
             value={value}
             onBlur={onBlur}
             onChange={(e) => setValue(e.target.value)}

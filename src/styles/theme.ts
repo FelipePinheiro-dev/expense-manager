@@ -71,6 +71,7 @@ export const theme = createTheme({
         {
          props: { variant: 'select' },
          style: {
+            textTransform: 'capitalize',
             '&:hover': {
               backgroundColor: '#e8e7e1'
             }
@@ -92,6 +93,7 @@ export const theme = createTheme({
         root: {
           '&:hover': {
             backgroundColor: '#092c1c',
+            color: '#ffffff',
           },
           '&.Mui-selected': {
             backgroundColor: '#092c1c',

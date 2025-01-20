@@ -8,19 +8,17 @@ import {
     TableCellStyled    
 } from './styles'
 
-import { UpdateTableCell } from './components/UpdateTableCell'
-import { UpdateCategoryCell } from './components/UpdateCategoryCell'
+import { CellInputUpdate } from './components/CellInputUpdate'
+import { CellMenuUpdate } from './components/CellMenuUpdate'
+import { CellDateUpdate } from './components/CellDateUpdate'
+
+import { CATEGORIES } from '@/constants/categories'
+import { TRANSACTIONS } from '@/constants/transactions'
 
 import { DATA, TypeData } from '@/mocks/data'
+
 import { useReactTable, ColumnDef, getCoreRowModel, flexRender } from '@tanstack/react-table'
 import { useState } from 'react'
-import { format } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
-
-function formatDatePtBR(date: string) {
-    const formatted = format(new Date(date), 'dd MMM yyyy', { locale: ptBR })
-    return formatted
-}
 
 const columns: ColumnDef<TypeData>[] = [
     {
@@ -32,31 +30,45 @@ const columns: ColumnDef<TypeData>[] = [
     {
         accessorKey: 'title',
         header: 'Title',
-        cell: (props) => <UpdateTableCell cell={props} table={props.table}/>
+        cell: (props) => <CellInputUpdate cell={props} table={props.table}/>
     },
 
     {
         accessorKey: 'category',
         header: 'Category',
-        cell: (props) => <UpdateCategoryCell cell={props} table={props.table}/>
+        cell: (props) => 
+            <CellMenuUpdate 
+                cell={props} 
+                table={props.table}
+                items={CATEGORIES}
+            />
     },
 
     {
         accessorKey: 'type',
         header: 'Type',
-        cell: (props) => <span>{String(props.getValue())}</span>
+        cell: (props) => 
+            <CellMenuUpdate 
+                cell={props} 
+                table={props.table}
+                items={TRANSACTIONS}
+            />
     },
 
     {
         accessorKey: 'value',
         header: 'Value',
-        cell: (props) => <span>{String(props.getValue())}</span>
+        cell: (props) => <CellInputUpdate cell={props} table={props.table}/>
     },
 
     {
         accessorKey: 'date',
         header: 'Date',
-        cell: (props) => <span>{formatDatePtBR(String(props.getValue()))}</span>
+        cell: (props) => 
+            <CellDateUpdate
+                cell={props}
+                table={props.table}
+            />
     },
 
 ]

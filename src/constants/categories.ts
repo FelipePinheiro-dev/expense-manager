@@ -1,26 +1,27 @@
 export enum TypeCategoriesENUM {
-    STUDIES = 'Studies', 
-    LEISURE = 'Leisure', 
-    BUSINESS = 'Business', 
-    CLOTHINGS = 'Clothings', 
-    FOOD = 'Food', 
-    SPORTS = 'Sports', 
-    UTILITIES = 'Utilities'
+    STUDIES = 'studies', 
+    LEISURE = 'leisure', 
+    BUSINESS = 'business', 
+    CLOTHINGS = 'clothings', 
+    FOOD = 'food', 
+    SPORTS = 'sports', 
+    UTILITIES = 'utilities'
 } 
 
-export type TypeCategoriesTYPE = 'Studies' | 'Leisure' | 'Business' | 'Clothings' | 'Food' | 'Sports' | 'Utilities'
+export type TypeCategoriesValues = 'studies' | 'leisure' | 'business' | 'clothings' | 'food' | 'sports' | 'utilities'
 
+export type TypeCategoriesNames = 'Studies' | 'Leisure' | 'Business' | 'Clothings' | 'Food' | 'Sports' | 'Utilities'
 export interface PropsCategories {
-    value: TypeCategoriesTYPE,
-    name: TypeCategoriesTYPE
+    value: TypeCategoriesValues,
+    name: TypeCategoriesNames
 }
 
 export const CATEGORIES: PropsCategories[] = [
-    {value: 'Studies', name: 'Studies'},
-    {value: 'Leisure', name: 'Leisure'},
-    {value: 'Business', name: 'Business'},
-    {value: 'Clothings', name: 'Clothings'},
-    {value: 'Food', name: 'Food'},
-    {value: 'Sports', name: 'Sports'},
-    {value: 'Utilities', name: 'Utilities'}
+    {value: 'studies', name: 'Studies'},
+    {value: 'leisure', name: 'Leisure'},
+    {value: 'business', name: 'Business'},
+    {value: 'clothings', name: 'Clothings'},
+    {value: 'food', name: 'Food'},
+    {value: 'sports', name: 'Sports'},
+    {value: 'utilities', name: 'Utilities'}
 ]

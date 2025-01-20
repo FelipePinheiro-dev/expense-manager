@@ -1,18 +1,21 @@
 import { TypeData } from '@/mocks/data'
-import { UpdateCategoryCellContainer } from './styles'
-import { CATEGORIES } from '@/constants/categories'
+import { CellMenuUpdateContainer } from './styles'
 
-import {Button, Menu, MenuItem } from '@mui/material'
+import { Button, Menu, MenuItem } from '@mui/material'
 import { CellContext, Table } from '@tanstack/react-table'
 import { useState, MouseEvent } from 'react'
 
-interface PropsUpdateCategoryCell {
-  cell: CellContext<TypeData, string>
-  table: Table<TypeData>
+interface PropsCellMenuUpdate {
+  cell: CellContext<TypeData, string>,
+  table: Table<TypeData>,
+  items: {
+    value: string,
+    name: string
+  }[]
 }
 
-export function UpdateCategoryCell({ cell, table }: PropsUpdateCategoryCell) {
-  const category = cell.getValue()
+export function CellMenuUpdate({ cell, table,  items }: PropsCellMenuUpdate) {
+  const itemSelected = cell.getValue()
   // @ts-expect-error: updateData is a custom function defined in TableMeta
   const { updateData } = table.options.meta
 
@@ -23,7 +26,7 @@ export function UpdateCategoryCell({ cell, table }: PropsUpdateCategoryCell) {
     setAnchorEl(event.currentTarget)
   }
 
-  const handleChangeCategory = (
+  const handleChangeItemSelected= (
     rowIndex: number, 
     columnId: string, 
     value: string
@@ -35,9 +38,9 @@ export function UpdateCategoryCell({ cell, table }: PropsUpdateCategoryCell) {
   const handleClose = () => {
     setAnchorEl(null)
   }
-
+  
   return (
-    <UpdateCategoryCellContainer>
+    <CellMenuUpdateContainer>
       <Button
         id="basic-button"
         variant='select'
@@ -46,7 +49,7 @@ export function UpdateCategoryCell({ cell, table }: PropsUpdateCategoryCell) {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        {category}
+        {itemSelected}
       </Button>
       <Menu
         id="basic-menu"
@@ -57,15 +60,15 @@ export function UpdateCategoryCell({ cell, table }: PropsUpdateCategoryCell) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        {CATEGORIES.map((category, index) => (
+        {items && items.map((item, index) => (
           <MenuItem 
-            key={`${category.value}-${index}`}
-            onClick={() => handleChangeCategory(cell.row.index, cell.column.id, category.value)}
+            key={`${item.value}-${index}`}
+            onClick={() => handleChangeItemSelected(cell.row.index, cell.column.id, item.value)}
           >
-            {category.value}
+            {item.name}
           </MenuItem>
         ))}
       </Menu>
-    </UpdateCategoryCellContainer>
+    </CellMenuUpdateContainer>
   )
 }
