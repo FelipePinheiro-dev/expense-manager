@@ -1,10 +1,20 @@
-import { FilterAlt } from '@mui/icons-material'
+import { FilterAlt, FilterAltOff } from '@mui/icons-material'
+import { CATEGORIES } from '@/constants/categories'
+
+import { ColumnFiltersType } from '../../'
 
 import { useState, MouseEvent } from 'react'
 import { Button, Menu, MenuItem, Typography } from '@mui/material'
-import { Box } from '@mui/material'
+import { Box, useTheme } from '@mui/material'
+interface Props {
+  columnFilters: ColumnFiltersType,
+  handleFilterChange: (filter: { id: string, value: string | string[] }) => void,
+}
 
-export function FilterCategoryTransaction() {
+export function FilterCategoryTransaction({ columnFilters = [], handleFilterChange }: Props) {
+  const { customColors } = useTheme().palette
+  const categoryFilter = columnFilters.find((transaction) => transaction.id === 'category')?.value || []
+  
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -12,6 +22,16 @@ export function FilterCategoryTransaction() {
   }
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const handleChoiceCategory = (category: string) => {
+    if(typeof categoryFilter === 'string') return
+
+    const newFilterValue = categoryFilter.includes(category)
+        ? categoryFilter.filter((cat: string) => cat !== category)
+        : [...categoryFilter, category]
+
+    handleFilterChange({ id: 'category', value: newFilterValue })
   }
 
   return (
@@ -24,10 +44,14 @@ export function FilterCategoryTransaction() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: '.375rem'}}>
-            <FilterAlt/>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: '.375rem' }}>
+            { categoryFilter.length > 0 ? 
+                <FilterAltOff/>
+                :
+                <FilterAlt/>
+            }
             <Typography>
-                Category
+              Category
             </Typography>
         </Box>
       </Button>
@@ -40,9 +64,26 @@ export function FilterCategoryTransaction() {
           'aria-labelledby': 'button-filter-category',
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <Typography 
+          sx={{ 
+            padding: 1, 
+            fontWeight: 'bold', 
+            color: customColors['green-400'] 
+          }}>
+          Filter by:
+        </Typography>
+        
+        { CATEGORIES &&
+            CATEGORIES.map((category, index) => (
+              <MenuItem 
+                key={`${category.value}-${index}`}
+                selected={categoryFilter.includes(category.value)}
+                onClick={() => handleChoiceCategory(category.value)}
+              >
+                {category.name}
+              </MenuItem>
+            ))
+        }
       </Menu>
     </div>
   )

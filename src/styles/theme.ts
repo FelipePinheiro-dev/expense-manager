@@ -84,7 +84,14 @@ export const theme = createTheme({
         root: {
           '&:hover': {
             backgroundColor: '#e8e7e1'
-          }
+          },
+          '&.Mui-selected': {
+            '&:hover': {
+              backgroundColor: '#092c1c'
+            },
+            backgroundColor: '#092c1c',
+            color: '#ffffff',
+          },
         }
       }
     },

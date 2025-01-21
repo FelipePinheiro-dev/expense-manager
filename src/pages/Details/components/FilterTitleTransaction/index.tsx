@@ -1,14 +1,10 @@
 import { Input, InputAdornment } from '@mui/material'
 import { Search } from '@mui/icons-material'
 
-export type ColumnFiltersType = {
-    id: string,
-    value: string
-}[]
-
+import { ColumnFiltersType } from '../../'
 interface Props {
     columnFilters: ColumnFiltersType,
-    handleFilterChange: (id: string, value: string) => void,
+    handleFilterChange: (filter: {id: string, value: string | string[]}) => void,
 }
 
 export function FilterTitleTransaction({ columnFilters = [], handleFilterChange}: Props) {
@@ -19,7 +15,7 @@ export function FilterTitleTransaction({ columnFilters = [], handleFilterChange}
             sx={{ height: 'max-content'}}
             placeholder='Search transactions'
             value={transactionName}
-            onChange={(e) => handleFilterChange('title', e.target.value)}
+            onChange={(e) => handleFilterChange({ id: 'title', value: e.target.value })}
             startAdornment={
                 <InputAdornment position='start'>
                     <Search/>

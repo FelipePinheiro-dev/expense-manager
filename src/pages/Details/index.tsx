@@ -1,3 +1,5 @@
+import { SwapVert, North, South} from '@mui/icons-material'
+
 import { 
     DetailsContainer,
     Filters, 
@@ -19,15 +21,21 @@ import { CATEGORIES } from '@/constants/categories'
 import { TRANSACTIONS } from '@/constants/transactions'
 
 import { DATA, TypeData } from '@/mocks/data'
-import { ColumnFiltersType } from './components/FilterTitleTransaction'
 
-import { useReactTable, ColumnDef, getCoreRowModel, flexRender, getFilteredRowModel } from '@tanstack/react-table'
+import { useReactTable, ColumnDef, getCoreRowModel, flexRender, getFilteredRowModel, getSortedRowModel } from '@tanstack/react-table'
 import { useState } from 'react'
+import { Box } from '@mui/material'
+
+export type ColumnFiltersType = {
+    id: string,
+    value: string | string[]
+}[]
 
 const columns: ColumnDef<TypeData>[] = [
     {
         accessorKey: 'id',
         header: 'ID',
+        enableSorting: false,
         cell: (props) => <span>{String(props.getValue())}</span>
     },
 
@@ -39,7 +47,9 @@ const columns: ColumnDef<TypeData>[] = [
                 type='text' 
                 cell={props} 
                 table={props.table}
-            />
+            />,
+        enableColumnFilter: true,
+        filterFn: 'includesString'
     },
 
     {
@@ -50,7 +60,16 @@ const columns: ColumnDef<TypeData>[] = [
                 cell={props} 
                 table={props.table}
                 items={CATEGORIES}
-            />
+            />,
+        enableColumnFilter: true,
+        filterFn: (row, columnId, filterValue) => {
+            console.log(row)
+            if (!Array.isArray(filterValue) || filterValue.length === 0) {
+                return true
+            }
+            const cellValue = row.getValue(columnId)
+            return filterValue.some((value) => value === cellValue)
+        },
     },
 
     {
@@ -94,10 +113,11 @@ export function Details() {
         data,
         columns,
         state: {
-            columnFilters
+            columnFilters,   
         },
         getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
+        getSortedRowModel: getSortedRowModel(),
         columnResizeMode: 'onChange',
         meta: {
             updateData: (rowIndex: number, columnId: string, value: string | number) => 
@@ -111,12 +131,16 @@ export function Details() {
         }
     })
 
-    function handleFilterChange(id: string, value: string) {
-        setColumnFilters((prev) => prev.filter(transaction => transaction.id !== id).concat({
-            id, value
-        }))
+    function handleFilterChange({ id, value }: { id: string; value: string | string[] }) {
+        setColumnFilters((prev) => {
+            const existingFilter = prev.find((filter) => filter.id === id)
+            if (existingFilter?.value === value) {
+                return prev
+            }
+            return prev.filter((filter) => filter.id !== id).concat({ id, value })
+        })
     }
-    
+
     return (
         <DetailsContainer>
             <Filters>
@@ -125,7 +149,10 @@ export function Details() {
                     handleFilterChange={handleFilterChange}
                 />
 
-                <FilterCategoryTransaction/>
+                <FilterCategoryTransaction
+                    columnFilters={columnFilters}
+                    handleFilterChange={handleFilterChange}
+                />
             </Filters>
             
             <TableContainerStyled>
@@ -141,8 +168,37 @@ export function Details() {
                                             style={{ width: header.getSize()}}
                                             onMouseDown={header.getResizeHandler()}
                                             onTouchStart={header.getResizeHandler()}
-                                        >
-                                            {String(header.column.columnDef.header)}
+                                        >   
+                                            <Box 
+                                                sx={{ 
+                                                    display: 'flex', 
+                                                    alignItems: 'center', 
+                                                    gap: '.375rem'
+                                                }}
+                                            >
+                                                {String(header.column.columnDef.header)}
+                                                { header.column.getCanSort() && 
+                                                    !['asc', 'desc'].includes(String(header.column.getIsSorted())) && 
+                                                        <SwapVert
+                                                            sx={{cursor: 'pointer'}}
+                                                            onClick={header.column.getToggleSortingHandler()}
+                                                        />
+                                                }
+                                                { header.column.getCanSort() && 
+                                                    header.column.getIsSorted() === 'asc' && 
+                                                        <North
+                                                            sx={{cursor: 'pointer', fontSize: '1rem' }}
+                                                            onClick={header.column.getToggleSortingHandler()}
+                                                        />
+                                                }
+                                                { header.column.getCanSort() && 
+                                                    header.column.getIsSorted() === 'desc' && 
+                                                        <South
+                                                            sx={{cursor: 'pointer', fontSize: '1rem'}}
+                                                            onClick={header.column.getToggleSortingHandler()}
+                                                        />
+                                                }
+                                            </Box>
                                             <div
                                                 onMouseDown={header.getResizeHandler()}
                                                 onTouchStart={header.getResizeHandler()}

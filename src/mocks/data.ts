@@ -1,9 +1,9 @@
 export const DATA = [
     {
       id: '1c52',
-      title: 'Hamburger',
+      title: 'Rocket',
       value: 50,
-      category: 'food',
+      category: 'studies',
       date: '2024-12-10T14:36:38.296Z',
       type: 'expense'
     },
@@ -13,21 +13,21 @@ export const DATA = [
         value: 50,
         category: 'food',
         date: '2024-12-10T14:36:38.296Z',
-        type: 'expense'
+        type: 'income'
       },
       {
         id: 'fsadfh',
-        title: 'teste',
+        title: 'Praia',
         value: 50,
-        category: 'food',
+        category: 'leisure',
         date: '2024-12-10T14:36:38.296Z',
-        type: 'expense'
+        type: 'income'
       },
       {
         id: 'eqwrwtr',
-        title: 'Hamburger',
+        title: 'Cotefacil',
         value: 50,
-        category: 'food',
+        category: 'business',
         date: '2024-12-10T14:36:38.296Z',
         type: 'expense'
       },
@@ -37,7 +37,7 @@ export const DATA = [
         value: 50,
         category: 'food',
         date: '2024-12-10T14:36:38.296Z',
-        type: 'expense'
+        type: 'income'
       },
       {
         id: 'sdsdqaw',

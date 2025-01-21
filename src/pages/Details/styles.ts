@@ -36,5 +36,5 @@ export const TableHeadStyled = styled(TableHead)(({ theme }) => ({}))
 export const TableBodyStyled = styled(TableBody)(({ theme }) => ({}))
 export const TableRowStyled = styled(TableRow)(({ theme }) => ({}))
 export const TableCellStyled = styled(TableCell)(({ theme }) => ({
-    position: 'relative'
+    position: 'relative',
 }))

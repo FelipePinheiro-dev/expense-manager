@@ -2,7 +2,7 @@ import { TypeData } from '@/mocks/data'
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
 import { CellContext, Table } from '@tanstack/react-table'
-import { TextField, Typography, useTheme } from '@mui/material'
+import { Box, TextField, useTheme } from '@mui/material'
 import { Edit, Close } from '@mui/icons-material'
 import { useState } from 'react'
 import { format } from 'date-fns'
@@ -30,7 +30,7 @@ export function CellDateUpdate({ cell, table }: Props) {
     return (
         <>
             { openDatePicker === true ? (
-                <Typography sx={{ display: 'flex', alignItems: 'center' , gap: '1rem'}}>
+                <Box sx={{ display: 'flex', alignItems: 'center' , gap: '1rem'}}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker
                             format='dd MMM yy'
@@ -51,9 +51,9 @@ export function CellDateUpdate({ cell, table }: Props) {
                             '&:hover': { color: customColors['red-500']},
                         }}
                     />
-                </Typography>
+                </Box>
                 ) : (
-                    <Typography sx={{ display: 'flex', gap: '1rem'}}>
+                    <Box sx={{ display: 'flex', gap: '1rem'}}>
                         <TextField 
                             size='small'
                             variant='standard'
@@ -71,7 +71,7 @@ export function CellDateUpdate({ cell, table }: Props) {
                                 '&:hover': { color: customColors['green-200']},
                             }}
                         />
-                    </Typography>   
+                    </Box>   
                 )
             }
         </>
