@@ -17,7 +17,7 @@ export const DATA = [
       },
       {
         id: 'fsadfh',
-        title: 'Hamburger',
+        title: 'teste',
         value: 50,
         category: 'food',
         date: '2024-12-10T14:36:38.296Z',

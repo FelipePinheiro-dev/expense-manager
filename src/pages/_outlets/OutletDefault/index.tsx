@@ -1,6 +1,5 @@
-import { OutletDefaultContainer, BoxContainer } from './styles'
+import { OutletDefaultContainer } from './styles'
 import { Sidebar } from '@/components/Sidebar'
-import { Filters } from '@/components/Filters'
 
 import { Outlet } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -19,10 +18,7 @@ export function OutletDefault() {
     return (
         <OutletDefaultContainer>
             <Sidebar/>
-            <BoxContainer>
-                <Filters/>
-                <Outlet/>
-            </BoxContainer>
+            <Outlet/>
         </OutletDefaultContainer>
     )
 }

@@ -1,5 +1,6 @@
 import { 
-    DetailsContainer, 
+    DetailsContainer,
+    Filters, 
     TableContainerStyled,
     TableStyled,
     TableHeadStyled,
@@ -11,13 +12,16 @@ import {
 import { CellInputUpdate } from './components/CellInputUpdate'
 import { CellMenuUpdate } from './components/CellMenuUpdate'
 import { CellDateUpdate } from './components/CellDateUpdate'
+import { FilterTitleTransaction } from './components/FilterTitleTransaction'
+import { FilterCategoryTransaction } from './components/FilterCategoryTransaction'
 
 import { CATEGORIES } from '@/constants/categories'
 import { TRANSACTIONS } from '@/constants/transactions'
 
 import { DATA, TypeData } from '@/mocks/data'
+import { ColumnFiltersType } from './components/FilterTitleTransaction'
 
-import { useReactTable, ColumnDef, getCoreRowModel, flexRender } from '@tanstack/react-table'
+import { useReactTable, ColumnDef, getCoreRowModel, flexRender, getFilteredRowModel } from '@tanstack/react-table'
 import { useState } from 'react'
 
 const columns: ColumnDef<TypeData>[] = [
@@ -84,7 +88,7 @@ const columns: ColumnDef<TypeData>[] = [
 
 export function Details() {
     const [ data, setData ] = useState(DATA)
-    const [ columnFilters, setColumnFilters ] = useState<TypeData[]>([])
+    const [ columnFilters, setColumnFilters ] = useState<ColumnFiltersType>([])
 
     const table = useReactTable({
         data,
@@ -92,7 +96,8 @@ export function Details() {
         state: {
             columnFilters
         },
-        getCoreRowModel:getCoreRowModel(),
+        getCoreRowModel: getCoreRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
         columnResizeMode: 'onChange',
         meta: {
             updateData: (rowIndex: number, columnId: string, value: string | number) => 
@@ -106,8 +111,23 @@ export function Details() {
         }
     })
 
+    function handleFilterChange(id: string, value: string) {
+        setColumnFilters((prev) => prev.filter(transaction => transaction.id !== id).concat({
+            id, value
+        }))
+    }
+    
     return (
         <DetailsContainer>
+            <Filters>
+                <FilterTitleTransaction
+                    columnFilters={columnFilters}
+                    handleFilterChange={handleFilterChange}
+                />
+
+                <FilterCategoryTransaction/>
+            </Filters>
+            
             <TableContainerStyled>
                 <TableStyled width={table.getTotalSize()} className='table'>
                     <TableHeadStyled>

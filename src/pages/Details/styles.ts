@@ -10,6 +10,16 @@ import {
 
 export const DetailsContainer = styled('div')(({ theme }) => ({}))
 
+export const Filters = styled('header')(({ theme }) => ({
+    height: '6.25rem',
+    border: `1px solid ${theme.palette.customColors['gray-200']}`,
+
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 2rem',
+    gap: '2rem',
+}))
+
 export const TableContainerStyled = styled(TableContainer)(({ theme }) => ({
     width: '100%',
     height: '100%',
