@@ -16,13 +16,14 @@ import { CellMenuUpdate } from './components/CellMenuUpdate'
 import { CellDateUpdate } from './components/CellDateUpdate'
 import { FilterTitleTransaction } from './components/FilterTitleTransaction'
 import { FilterCategoryTransaction } from './components/FilterCategoryTransaction'
+import { Pagination } from './components/Pagination'
 
 import { CATEGORIES } from '@/constants/categories'
 import { TRANSACTIONS } from '@/constants/transactions'
 
 import { DATA, TypeData } from '@/mocks/data'
 
-import { useReactTable, ColumnDef, getCoreRowModel, flexRender, getFilteredRowModel, getSortedRowModel } from '@tanstack/react-table'
+import { useReactTable, ColumnDef, getCoreRowModel, flexRender, getFilteredRowModel, getSortedRowModel, getPaginationRowModel } from '@tanstack/react-table'
 import { useState } from 'react'
 import { Box } from '@mui/material'
 
@@ -108,15 +109,18 @@ const columns: ColumnDef<TypeData>[] = [
 export function Details() {
     const [ data, setData ] = useState(DATA)
     const [ columnFilters, setColumnFilters ] = useState<ColumnFiltersType>([])
+    //const [ pagination, setPagination ] = useState({pageIndex: 0, pageSize: 5})
 
     const table = useReactTable({
         data,
         columns,
         state: {
-            columnFilters,   
+            columnFilters,
+            //pagination
         },
         getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
+        getPaginationRowModel: getPaginationRowModel(),
         getSortedRowModel: getSortedRowModel(),
         columnResizeMode: 'onChange',
         meta: {
@@ -226,6 +230,53 @@ export function Details() {
                         }
                     </TableBodyStyled>
                 </TableStyled>
+                <br></br>
+                <Pagination
+                    table={table}
+                />
+              { /* <Box>
+                    Page {table.getState().pagination.pageIndex + 1} of{' '}
+                    {table.getPageCount()}
+                </Box>
+                <Box>
+                    <Button
+                        onClick={() => setPagination((prev) => ({
+                            ...prev,
+                            pageIndex: 0
+                        }))}
+                        disabled={!table.getCanPreviousPage()}
+                    >
+                        {'<<'}
+                    </Button>
+                    <Button 
+                        onClick={() => setPagination((prev) => ({
+                            ...prev,
+                            pageIndex: prev.pageIndex  - 1
+                        }))}
+                        disabled={!table.getCanPreviousPage()}
+                    >
+                        {'<'}
+                    </Button>
+
+                    <Button
+                        onClick={() => setPagination((prev) => ({
+                            ...prev,
+                            pageIndex: prev.pageIndex + 1
+                        }))}
+                        disabled={!table.getCanNextPage()}
+                    >
+                        {'>'}
+                    </Button>
+                    <Button
+                        onClick={() => setPagination((prev) => ({
+                            ...prev,
+                            pageIndex: table.getPageCount() - 1
+                        }))}
+                        disabled={!table.getCanNextPage()}
+                    >
+                        {'>>'}
+                    </Button>
+                </Box>*/ }
             </TableContainerStyled>
         </DetailsContainer>
     )

@@ -13,6 +13,7 @@ interface Props {
 
 export function FilterCategoryTransaction({ columnFilters = [], handleFilterChange }: Props) {
   const { customColors } = useTheme().palette
+
   const categoryFilter = columnFilters.find((transaction) => transaction.id === 'category')?.value || []
   
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
