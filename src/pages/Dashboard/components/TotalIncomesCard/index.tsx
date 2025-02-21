@@ -1,37 +1,35 @@
-import { 
-    TotalIncomesCardContainer,
-    TotalIncomesCardContent, 
-    TotalIncomesBox,
-    TotalIncomesTypography
-} from './styles'
+import { BoxStyled } from './styles'
+
+import { Card } from '@/components/Card'
+import { Text } from '@/components/Text'
 
 import { ArrowCircleUp, TrendingUp } from '@mui/icons-material'
+import { Box } from '@mui/material'
+
 import { useTotals } from '@/hooks/useTotals'
 import { formatCurrency } from '@/formats/formatCurrency'
 
 export function TotalIncomesCard() {
-    const accumulator = useTotals()
+  const accumulator = useTotals()
+  const valueFormatCurrency = formatCurrency.format(accumulator.totIncome)
+  return (
+    <Card>
+      <Text variant="tertiary">Total Incomes (month)</Text>
 
-    return (
-        <TotalIncomesCardContainer>
-            <TotalIncomesCardContent>
-                 <TotalIncomesTypography>
-                    Total Incomes (month)
-                </TotalIncomesTypography>
-                
-                <TotalIncomesBox>
-                    <ArrowCircleUp className='green'/>
-                    {formatCurrency.format(accumulator.totIncome)}
-                </TotalIncomesBox>
+      <BoxStyled>
+        <ArrowCircleUp className="green" />
+        <Text as="strong" size="lg">
+          {valueFormatCurrency}
+        </Text>
+      </BoxStyled>
 
-                <TotalIncomesTypography>
-                    <TrendingUp className='green'/>
-                    <span>
-                        <span className='green'> +24% </span>
-                        <span>from last month</span>
-                    </span>
-                </TotalIncomesTypography>
-            </TotalIncomesCardContent>
-        </TotalIncomesCardContainer>
-    )
+      <BoxStyled>
+        <TrendingUp className="green" />
+        <Box>
+          <Text variant="success"> +24% </Text>
+          <Text variant="tertiary">from last month</Text>
+        </Box>
+      </BoxStyled>
+    </Card>
+  )
 }

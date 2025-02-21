@@ -1,11 +1,14 @@
 import { LogoAppContainer } from './styles'
-import { Fitbit } from '@mui/icons-material'
+import { Heading } from '@/components/Heading'
+import { LogoImage } from '@/components/LogoImage'
 
 export function LogoApp() {
-    return (
-        <LogoAppContainer>
-            <Fitbit/>
-            <h1>Expense Manager</h1>
-        </LogoAppContainer>
-    )
+  return (
+    <LogoAppContainer>
+      <LogoImage />
+      <Heading variant="primary" as="h1">
+        Expense Manager
+      </Heading>
+    </LogoAppContainer>
+  )
 }

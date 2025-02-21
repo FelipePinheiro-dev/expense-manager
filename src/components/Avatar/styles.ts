@@ -1,25 +1,22 @@
-import styled from '@emotion/styled'
+import { styled } from '@mui/material'
 
 export const AvatarContainer = styled('span')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   gap: '0.8rem',
-  
+
   borderTop: `1px solid ${theme.palette.customColors['gray-800']}`,
 
-  '> img': {
-    width: '42px',
-  },
-
-  '> .author': {
+  '.author': {
     display: 'flex',
     flexDirection: 'column',
-    fontSize: '0.8rem',
-    color: theme.palette.customColors['white'],
-
-    span: {
-      color: theme.palette.customColors['gray-600'],
-    },
   },
 }))
+
+export const ImageStyled = styled('img')({
+  width: 42,
+  height: 42,
+  borderRadius: 999,
+  objectFit: 'cover',
+})

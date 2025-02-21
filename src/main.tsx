@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import { ThemeProvider, CssBaseline } from '@mui/material'
+import { ThemeProvider } from '@mui/material'
 import { theme } from './styles/theme.ts'
 import { GlobalStyles } from './styles/GlobalStyles.tsx'
 
@@ -19,13 +19,12 @@ createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <ThemeProvider theme={theme}>
-          <CssBaseline/>
-          <GlobalStyles/>
+          <GlobalStyles />
           <NotificationsProvider>
-            <AppRoutes/>
+            <AppRoutes />
           </NotificationsProvider>
         </ThemeProvider>
       </PersistGate>
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 )

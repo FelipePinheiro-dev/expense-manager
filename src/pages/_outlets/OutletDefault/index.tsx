@@ -9,16 +9,16 @@ import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/redux/store'
 
 export function OutletDefault() {
-    const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>()
 
-    useEffect(() => {
-        dispatch(fetchTransactions())
-    }, [dispatch])
+  useEffect(() => {
+    dispatch(fetchTransactions())
+  }, [dispatch])
 
-    return (
-        <OutletDefaultContainer>
-            <Sidebar/>
-            <Outlet/>
-        </OutletDefaultContainer>
-    )
+  return (
+    <OutletDefaultContainer>
+      <Sidebar />
+      <Outlet />
+    </OutletDefaultContainer>
+  )
 }

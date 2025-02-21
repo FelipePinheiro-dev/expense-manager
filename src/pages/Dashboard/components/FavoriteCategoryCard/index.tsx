@@ -1,40 +1,40 @@
-import { 
-    FavoriteCategoryCardContainer, 
-    FavoriteCategoryCardContent,
-    FavoriteCategoryName, 
-    FavoriteCategoryBox, 
-    FavoriteCategoryTypography 
-} from './styles'
+import { BoxStyled } from './styles'
 
+import { Card } from '@/components/Card'
+import { Text } from '@/components/Text'
+
+import { Box } from '@mui/material'
 import { ArrowCircleDown, TrendingDown } from '@mui/icons-material'
+
 import { useTotals } from '@/hooks/useTotals'
 import { formatCurrency } from '@/formats/formatCurrency'
 
 export function FavoriteCategoryCard() {
-    const accumulator = useTotals()
+  const accumulator = useTotals()
+  const valueFormatCurrency = formatCurrency.format(accumulator.totExpense)
 
-    return (
-        <FavoriteCategoryCardContainer>
-            <FavoriteCategoryCardContent>
-                <FavoriteCategoryTypography>
-                    Favorite Category (month)
-                </FavoriteCategoryTypography>
-                
-                <FavoriteCategoryName>Studies</FavoriteCategoryName>
+  return (
+    <Card>
+      <Text variant="tertiary">Favorite Category (month)</Text>
 
-                <FavoriteCategoryBox>
-                    <ArrowCircleDown className='red'/>
-                    {formatCurrency.format(accumulator.totExpense)}
-                </FavoriteCategoryBox>
+      <Text variant="tertiary" size="sm">
+        Studies
+      </Text>
 
-                <FavoriteCategoryTypography>
-                    <TrendingDown className='red'/>
-                    <span>
-                        <span className='red'> + 4% </span>
-                        <span>from last month (Food) </span>
-                    </span>
-                </FavoriteCategoryTypography>
-            </FavoriteCategoryCardContent>              
-        </FavoriteCategoryCardContainer>
-    )
+      <BoxStyled>
+        <ArrowCircleDown className="red" />
+        <Text as="strong" size="lg">
+          {valueFormatCurrency}
+        </Text>
+      </BoxStyled>
+
+      <BoxStyled>
+        <TrendingDown className="red" />
+        <Box>
+          <Text variant="damage"> + 4% </Text>
+          <Text variant="tertiary">from last month (Food) </Text>
+        </Box>
+      </BoxStyled>
+    </Card>
+  )
 }

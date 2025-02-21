@@ -1,42 +1,65 @@
+import {
+  TransactionContainer,
+  BoxRow,
+  BoxColumn,
+  BoxColumnItemsEnd,
+} from './styles'
+import { Text } from '@/components/Text'
+
 import { ArrowCircleUp, ArrowCircleDown } from '@mui/icons-material'
-import { TransactionContainer, TransactionContent, LayoutDefault, LayoutLeft } from './styles'
-import { formatCurrency } from '../../../../../../formats/formatCurrency'
+
+import { formatCurrency } from '@/formats/formatCurrency'
 import dayjs from 'dayjs'
+
 export type TypeVariant = 'income' | 'expense'
 
 interface PropsTransaction {
-    id?: string
-    title: string,
-    value: number,
-    date: string,
-    category: string,
-    type: TypeVariant
+  id?: string
+  title: string
+  value: number
+  date: string
+  category: string
+  type: TypeVariant
 }
 
 interface Component {
-    props: PropsTransaction
+  props: PropsTransaction
 }
 
 export function Transaction({ props }: Component) {
-    const dateCurrent = dayjs(props.date)
-    const formatISO = dateCurrent.format('YYYY-MM-DD') // Format as '2024-12-02'
-    const formatAbbreviated = dateCurrent.format('MMM DD, YYYY')
+  const dateCurrent = dayjs(props.date)
+  const formatISO = dateCurrent.format('YYYY-MM-DD')
+  const formatAbbreviated = dateCurrent.format('MMM DD, YYYY')
+  const valueFormatCurrency = formatCurrency.format(props.value)
+  const isExpense = props.type === 'expense'
+  return (
+    <TransactionContainer elevation={3}>
+      <BoxRow>
+        {isExpense ? (
+          <ArrowCircleDown className="down" />
+        ) : (
+          <ArrowCircleUp className="up" />
+        )}
+        <BoxColumn>
+          <Text variant="tertiary" size="sm">
+            {props.title}
+          </Text>
+          <time dateTime={formatISO}>
+            <Text variant="tertiary" size="sm">
+              {formatAbbreviated}
+            </Text>
+          </time>
+        </BoxColumn>
+      </BoxRow>
 
-    return (
-        <TransactionContainer>
-            <TransactionContent>
-                { props.type && props.type === 'income' ? <ArrowCircleUp className='up'/> : <ArrowCircleDown className='down'/> }
-                
-                <LayoutDefault>
-                    <span>{props.title}</span>
-                    <time dateTime={formatISO}>{formatAbbreviated}</time>
-                </LayoutDefault>
-                
-                <LayoutLeft>
-                    <span>{props.category}</span>
-                    <span> {formatCurrency.format(props.value)} </span>
-                </LayoutLeft>
-            </TransactionContent>
-        </TransactionContainer>
-    )
+      <BoxColumnItemsEnd>
+        <Text variant="tertiary" size="sm">
+          {props.category}
+        </Text>
+        <Text variant={isExpense ? 'damage' : 'success'} size="sm">
+          {(isExpense ? ' - ' : '') + valueFormatCurrency}
+        </Text>
+      </BoxColumnItemsEnd>
+    </TransactionContainer>
+  )
 }

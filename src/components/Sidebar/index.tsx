@@ -1,42 +1,33 @@
-import { GridViewRounded, ReceiptLong, AccountBalance } from '@mui/icons-material'
-import { NavLink } from 'react-router-dom'
+import { GridViewRounded, ReceiptLong } from '@mui/icons-material'
 import { SidebarContainer } from './styles'
-import { LogoApp } from '../LogoApp'
-import { Avatar } from '../Avatar'
+import { Text } from '@/components/Text'
+import { Heading } from '../Heading'
+
+import { NavLink } from 'react-router-dom'
+import { LogoApp } from '@/components/LogoApp'
+import { Avatar } from '@/components/Avatar'
 
 export function Sidebar() {
-    return (
-        <SidebarContainer>   
-            <LogoApp/>
-            <span className='subtitle'>Menu</span>
+  return (
+    <SidebarContainer>
+      <div className="content">
+        <LogoApp />
+        <Heading size="sm" className="menu">
+          Menu
+        </Heading>
+        <nav className="nav">
+          <NavLink to="/">
+            <GridViewRounded />
+            <Text variant="secondary">Overview</Text>
+          </NavLink>
+          <NavLink to="/details">
+            <ReceiptLong />
+            <Text variant="secondary">Details</Text>
+          </NavLink>
+        </nav>
+      </div>
 
-            <nav className='nav'>
-                <NavLink to='/'>
-                    <span className='green-border-active'></span>
-                    <div className='text'>
-                        <GridViewRounded/>
-                        <span>Overview</span>
-                    </div>
-                </NavLink>
-
-                <NavLink to='/details'>
-                    <span className='green-border-active'></span>
-                    <div className='text'>
-                        <ReceiptLong/>
-                        <span>Details</span>
-                    </div>
-                </NavLink>
-
-                <NavLink to='/transactions'>
-                    <span className='green-border-active'></span>
-                    <div className='text'>
-                        <AccountBalance/>
-                        <span>New Transaction</span>
-                    </div>
-                </NavLink>
-            </nav>
-
-            <Avatar/>
-        </SidebarContainer >
-    )
+      <Avatar />
+    </SidebarContainer>
+  )
 }

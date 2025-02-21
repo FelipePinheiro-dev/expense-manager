@@ -1,11 +1,11 @@
-import { 
-  Pagination as MuiPagination, 
+import {
+  Pagination as MuiPagination,
   Stack,
   Select,
   MenuItem,
   FormControl,
   InputLabel,
-  SelectChangeEvent 
+  SelectChangeEvent,
 } from '@mui/material'
 
 import { Table } from '@tanstack/react-table'
@@ -13,7 +13,7 @@ import { TypeData } from '@/mocks/data'
 import { ChangeEvent } from 'react'
 
 interface Props {
-  table: Table<TypeData> 
+  table: Table<TypeData>
 }
 export function Pagination({ table }: Props) {
   const { pageIndex, pageSize } = table.getState().pagination
